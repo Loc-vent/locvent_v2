@@ -4,7 +4,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Home from './Home';
 import History from './History';
 import Profile from './Profile';
-import {TouchableOpacity, View, Text ,} from 'react-native';
+import {TouchableOpacity, View, Text} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
@@ -47,7 +47,7 @@ export function MyTabs({navigation}) {
               marginRight: 30,
             }}>
             <MaterialCommunityIcons
-              onPress={() => navigation.navigate("Message")}
+              onPress={() => navigation.navigate('Message')}
               name="comment-processing"
               color="#009F93"
               size={40}
@@ -59,7 +59,6 @@ export function MyTabs({navigation}) {
             style={{
               marginLeft: 20,
             }}
-            //   onPress={() => navigation.goBack()}
           >
             <MaterialCommunityIcons
               name="arrow-left"
