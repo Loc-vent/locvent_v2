@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   View,
@@ -10,37 +10,51 @@ import {
 } from 'react-native';
 
 import {Avatar, Button, Card, Title, Paragraph} from 'react-native-paper';
+import {HistoryData, userData} from '../Data/Data';
 
+// function passData(data) {
+//   const [activeData, setActiveData] = useState({
+//     id: '',
+//     Latitude: '',
+//     Longitude: '',
+//     date: '',
+//     description: '',
+//   });
+//   setActiveData(data);
 
+//   const [avtiveId, setActiveID] = useState(0);
+// }
 
-const HistoryCard = ({id, Latitude, Longitude, date, description ,navigation}) => (
-  <TouchableOpacity
-  onPress={() => navigation.navigate('HistoryView')}
-  >
-    <Card style={styles.container}>
-      <Card.Content>
-        <Title>
-          {' '}
-          <Text style={styles.texts}> ID : {id} </Text>
-        </Title>
-        <Title>
-          {' '}
-          <Text style={styles.texts}> Date : {date} </Text>
-        </Title>
-        <Title>
-          {' '}
-          <Text style={styles.texts}>
-            location - Lat - {Latitude} , Log - {Longitude}
-          </Text>
-        </Title>
-        <Paragraph>
-          <Text style={styles.texts}>Description : {description}</Text>
-        </Paragraph>
-      </Card.Content>
-      {/* <Card.Cover source={{uri: 'https://picsum.photos/700'}} /> */}
-    
-    </Card>
-  </TouchableOpacity>
+const HistoryCard = ({
+  id,
+  Latitude,
+  Longitude,
+  date,
+  description,
+  navigation,
+}) => (
+  <Card style={styles.container}>
+    <Card.Content>
+      <Title>
+        {' '}
+        <Text style={styles.texts}> ID : {id} </Text>
+      </Title>
+      <Title>
+        {' '}
+        <Text style={styles.texts}> Date : {date} </Text>
+      </Title>
+      <Title>
+        {' '}
+        <Text style={styles.texts}>
+          location - Lat - {Latitude} , Log - {Longitude}
+        </Text>
+      </Title>
+      <Paragraph>
+        <Text style={styles.texts}>Description : {description}</Text>
+      </Paragraph>
+    </Card.Content>
+    {/* <Card.Cover source={{uri: 'https://picsum.photos/700'}} /> */}
+  </Card>
 );
 
 export default HistoryCard;
@@ -48,15 +62,14 @@ export default HistoryCard;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: StatusBar.currentHeight  || 0,
+    margin: StatusBar.currentHeight || 0,
     borderRadius: 20,
     backgroundColor: '#009F93',
     color: '#fff',
     textDecorationColor: '#fff',
     textShadowColor: '#fff',
 
-
-    // shadow   
+    // shadow
     shadowColor: '#000',
     shadowOffset: {
       width: 0,

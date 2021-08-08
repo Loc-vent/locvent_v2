@@ -1,6 +1,6 @@
 export const HistoryData = [
   {
-    id: '00001',
+    id: 1,
     location: ' Addis Ababa',
     date: '2016-03-01',
     description: 'This is the first itemthe first item',
@@ -10,7 +10,7 @@ export const HistoryData = [
     },
   },
   {
-    id: '00002',
+    id: 2,
     location: 'New York',
     date: '2016-04-01',
     description: 'This is the first itemthe first item',
@@ -20,7 +20,7 @@ export const HistoryData = [
     },
   },
   {
-    id: '00003',
+    id: 3,
     location: 'Hawassa ',
     date: '2016-07-01',
     description: 'This is the first itemthe first item',
@@ -30,7 +30,7 @@ export const HistoryData = [
     },
   },
   {
-    id: '00004',
+    id: 4,
     location: 'Axum ',
     date: '2016-07-01',
     description: 'This is the first itemthe first item',
@@ -40,7 +40,7 @@ export const HistoryData = [
     },
   },
   {
-    id: '00005',
+    id: 5,
     location: ' Addis Ababa',
     date: '2016-03-01',
     description: 'This is the first itemthe first item',
@@ -50,7 +50,7 @@ export const HistoryData = [
     },
   },
   {
-    id: '00006',
+    id: 6,
     location: 'New York',
     date: '2016-04-01',
     description: 'This is the first itemthe first item',
@@ -60,7 +60,7 @@ export const HistoryData = [
     },
   },
   {
-    id: '00007',
+    id: 7,
     location: 'Hawassa ',
     date: '2016-07-01',
     description: 'This is the first itemthe first item',
@@ -70,7 +70,7 @@ export const HistoryData = [
     },
   },
   {
-    id: '00008',
+    id: 8,
     location: 'Axum ',
     date: '2016-07-01',
     description: 'This is the first itemthe first item',
