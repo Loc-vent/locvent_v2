@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
-import {HistoryList , HistoryView} from '../Screens/HistoryScreens/HistoryList';
+import {HistoryList } from '../Screens/HistoryScreens/HistoryList';
 // import HistoryView from '../Screens/HistoryScreens/HistoryView';
 
 import {createStackNavigator} from '@react-navigation/stack';
@@ -20,13 +20,7 @@ export default function History({navigation}) {
         name="HistoryList"
         component={HistoryList}
       />
-      <Stack.Screen
-        options={{
-          headerShown: false,
-        }}
-        name="HistoryView"
-        component={HistoryView}
-      />
+    
     </Stack.Navigator>
   );
 }

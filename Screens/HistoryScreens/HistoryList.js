@@ -2,18 +2,10 @@ import React, {useState, useReducer} from 'react';
 import {FlatList, View, Text, TouchableOpacity} from 'react-native';
 import {HistoryData, userData} from '../../Data/Data';
 import HistoryCard from '../../components/HistoryCard';
-import {Button} from 'react-native-paper';
 import Modal from 'react-native-modal';
 
 const ACTIONS = {
   TOGGLEMODAL: 'TOGGLEMODAL',
-
-  DELETE_HISTORY: 'DELETE_HISTORY',
-  EDIT_HISTORY: 'EDIT_HISTORY',
-  EDIT_HISTORY_DATE: 'EDIT_HISTORY_DATE',
-
-  ADD_HISTORY_DATE: 'ADD_HISTORY_DATE',
-  DELETE_HISTORY_DATE: 'DELETE_HISTORY_DATE',
 };
 
 const active = {
@@ -45,8 +37,6 @@ export function HistoryList({navigation}) {
         return state;
     }
   }
-
-  function updateActiveHistory() {}
 
   const [state, dispatch] = useReducer(reducer, activeHistory);
 
@@ -90,20 +80,41 @@ export function HistoryList({navigation}) {
       />
 
       <View style={{flex: 1}}>
-        <Modal isVisible={isModalVisible}>
-          <View style={{flex: 1, backgroundColor: '#fff'}}>
-            <Text> thi steeh {state.id} </Text>
-            <Text> thi steeh {state.description} </Text>
-            <Text> thi steeh {state.location.Latitude} </Text>
-            <Text> thi steeh {state.location.Longitude} </Text>
+        <Modal
+          isVisible={isModalVisible}
+          transparent={true}
+          animationType="slide">
+          <View style={styles.modalContainer}>
+            <View style={styles.textLineContainer}>
+              <Text style={styles.titleHeading}> Report ID : </Text>
+              <Text style={styles.dataText}> {state.id} </Text>
+            </View>
 
-            <Button title="Show modal">
-              <Text>this shit </Text>{' '}
-            </Button>
+            <View style={styles.textLineContainer}>
+              <Text style={styles.titleHeading}> Date : </Text>
+              <Text style={styles.dataText}> {state.date} </Text>
+            </View>
 
-            <Button title="Show modal" onPress={toggleModal}>
-              <Text>Kill modal </Text>{' '}
-            </Button>
+            <View style={styles.textLineContainer}>
+              <Text style={styles.titleHeading}> Lattitude : </Text>
+              <Text style={styles.dataText}> {state.location.Latitude} </Text>
+            </View>
+
+            <View style={styles.textLineContainer}>
+              <Text style={styles.titleHeading}> Longitude : </Text>
+              <Text style={styles.dataText}> {state.location.Longitude} </Text>
+            </View>
+
+            <View style={styles.textLineContainer}>
+              <Text style={styles.titleHeading}> Description : </Text>
+              <Text style={styles.dataText}> {state.description} </Text>
+            </View>
+
+            <TouchableOpacity style={styles.closeBtn} onPress={toggleModal}>
+              <View>
+                <Text style={styles.closeText}>Close </Text>
+              </View>
+            </TouchableOpacity>
           </View>
         </Modal>
       </View>
@@ -111,6 +122,53 @@ export function HistoryList({navigation}) {
   );
 }
 
-export function HistoryView() {
-  return <Text>this</Text>;
-}
+const styles = {
+  modalContainer: {
+    flex: 1,
+    backgroundColor: '#ffffff',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',
+    padding: 25,
+    alignContent: 'center',
+    opacity: 0.8,
+  },
+  textLineContainer: {
+    flexDirection: 'row',
+    marginTop: 20,
+    marginBottom: 14,
+  },
+  titleHeading: {
+    fontSize: 30,
+    color: '#009F93',
+    fontWeight: 'bold',
+    fontFamily: 'Comfortaa',
+    letterSpacing: 0.5,
+  },
+  dataText: {
+    flex: 1,
+    fontSize: 20,
+    color: 'grey',
+    fontWeight: '100',
+    fontFamily: 'Comfortaa',
+  },
+  closeBtn: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+
+    height: 70,
+    width: '100%',
+    borderRadius: 15,
+    backgroundColor: '#009F93',
+    padding: 10,
+    marginBottom: 10,
+    marginTop: 15,
+  },
+  closeText: {
+    color: 'white',
+    fontFamily: 'Comfortaa',
+    fontWeight: '100',
+    fontSize: 30,
+    letterSpacing: 1.9,
+  },
+};
