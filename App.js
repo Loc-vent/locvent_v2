@@ -5,7 +5,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {MyTabs} from './Navigator/Navigator';
 
-import {AppRegistry} from 'react-native';
 import {Provider as PaperProvider} from 'react-native-paper';
 const Tab = createBottomTabNavigator();
 

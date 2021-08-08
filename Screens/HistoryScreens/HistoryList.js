@@ -1,13 +1,22 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {FlatList} from 'react-native';
+import {HistoryData, userData} from '../../Data/Data';
+import HistoryCard from '../../components/HistoryCard';
 
 export default function HistoryList({navigation}) {
   return (
-    <View>
-      <Text>this is history LIST</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('HistoryView')}>
-        <Text>go to history view</Text>
-      </TouchableOpacity>
-    </View>
+    <FlatList
+      data={HistoryData}
+      renderItem={({item}) => (
+        <HistoryCard
+          navigation={navigation}
+          id={item.id}
+          date={item.date}
+          description={item.description}
+          Latitude={item.location.Latitude}
+          Longitude={item.location.Longitude}
+        />
+      )}
+    />
   );
 }
