@@ -5683,6 +5683,11 @@ react-native-blur@^3.2.2:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-camera-hooks@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/react-native-camera-hooks/-/react-native-camera-hooks-0.5.1.tgz#0112611fb4fe3fd2c30832aa33bcb5a8cf735da2"
+  integrity sha512-+Jr2PBKa9MVbKRroiJop89hAxq/j+IG5Lui4W5k54EuGfvjFQ8GxMz5mAq6TaPQCZYqZCBtUy6mApPAfM8An/Q==
+
 react-native-camera@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/react-native-camera/-/react-native-camera-4.0.1.tgz#355c20a4eb849cb42032b91003290c269a930300"
@@ -5745,6 +5750,11 @@ react-native-paper@^4.9.2:
     "@callstack/react-theme-provider" "^3.0.6"
     color "^3.1.2"
     react-native-iphone-x-helper "^1.3.1"
+
+react-native-permissions@^3.0.5:
+  version "3.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-permissions/-/react-native-permissions-3.0.5.tgz#94542a343abdac801fa0a4593ea2c751cb45c41f"
+  integrity sha512-hcvLtHhTyOTXC+CCv79d4Qtdnj6PGuY5Ms0fhW8V6Et1T/mPvzO6++Du4jwEv/oHZ62qMWKUDq0/Tsh63QHuyQ==
 
 react-native-ratings@8.0.4:
   version "8.0.4"

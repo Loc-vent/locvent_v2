@@ -22,16 +22,20 @@ export default function Home({navigation}) {
         component={HomeScreen}
       />
       <Stack.Screen
-        options={{
-          // headerShown: false,
-        }}
+        options={
+          {
+            // headerShown: false,
+          }
+        }
         name="ReportForm"
         component={ReportForm}
       />
       <Stack.Screen
-        options={{
-          // headerShown: false,
-        }}
+        options={
+          {
+            // headerShown: false,
+          }
+        }
         name="ReportSucceess"
         component={ReportSuccess}
       />
