@@ -1,5 +1,4 @@
 import React from 'react';
-import {View, Text} from 'react-native';
 import HomeScreen from '../Screens/HomeScreens/HomeScreen';
 import ReportForm from '../Screens/HomeScreens/ReportForm';
 import ReportSuccess from '../Screens/HomeScreens/ReportSuccess';
@@ -58,7 +57,6 @@ export default function Home({navigation}) {
             color: '#009F93',
             fontSize: 40,
             margin: 10,
-            // backgroundColor:"#ffff",
           },
         }}
         name="Message"

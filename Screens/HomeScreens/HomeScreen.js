@@ -2,8 +2,6 @@ import React from 'react';
 import {
   View,
   TouchableOpacity,
-  TouchableWithoutFeedback,
-  Text,
 } from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import {useCamera} from 'react-native-camera-hooks';
@@ -51,7 +49,6 @@ export default function HomeScreen({initialProps}) {
             }
           }}>
           <FontAwesome
-            // style={styles.shutterButten}
             name="circle-o"
             size={90}
             color="#009F93"

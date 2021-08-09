@@ -1,5 +1,4 @@
 import React from 'react';
-import {View, Text} from 'react-native';
 import Message from '../Screens/MessageScreens/message';
 import News from '../Screens/MessageScreens/News';
 import NoticeBoard from '../Screens/MessageScreens/NoticeBoard';

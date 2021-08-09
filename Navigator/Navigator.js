@@ -7,14 +7,11 @@ import Profile from './Profile';
 import {TouchableOpacity, View, Text} from 'react-native';
 import {Button} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
-// import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 const Tab = createBottomTabNavigator();
-// const Tab = createBottomTabNavigator();
 
 export function MyTabs() {
   const navigation = useNavigation();
-  // const goToMessages = ({navigation}) => navigation.navigate('Message');
 
   return (
     <Tab.Navigator
@@ -68,27 +65,10 @@ export function MyTabs() {
         },
 
         headerRight: () => (
-          // <Button>
-          // <TouchableOpacity>
-          //   <MaterialCommunityIcons
-          //     // onPress={() => navigation.navigate('Message')}
-          //     onPress={() => navigation.navigate('HistoryList')}
-          //     style={{
-          //       marginRight: 30,
-          //     }}
-          //     name="comment-processing"
-          //     color="#009F93"
-          //     size={40}
-          //   />
-          // </TouchableOpacity>
-          // </Button>
-
           <Button
             onPress={() => navigation.navigate('Message')}
-            title="Go to notifications">
+            title="Go to Messages">
             <MaterialCommunityIcons
-              // onPress={() => navigation.navigate('Message')}
-              //  onPress={() => navigation.navigate('HistoryList')}
               style={{
                 marginRight: 30,
               }}
@@ -98,21 +78,6 @@ export function MyTabs() {
             />
           </Button>
         ),
-        // headerLeft: () => (
-        //   <TouchableOpacity
-
-        //   onPress={() => navigation.navigate.back()}
-
-        //     style={{
-        //       marginLeft: 20,
-        //     }}>
-        //     <MaterialCommunityIcons
-        //       name="arrow-left"
-        //       color="#009F93"
-        //       size={30}
-        //     />
-        //   </TouchableOpacity>
-        // ),
       }}>
       <Tab.Screen
         name="History"
