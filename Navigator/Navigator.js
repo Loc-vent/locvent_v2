@@ -5,75 +5,128 @@ import Home from './Home';
 import History from './History';
 import Profile from './Profile';
 import {TouchableOpacity, View, Text} from 'react-native';
+import {Button} from 'react-native-paper';
+import {useNavigation} from '@react-navigation/native';
+// import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 const Tab = createBottomTabNavigator();
+// const Tab = createBottomTabNavigator();
 
-export function MyTabs({navigation}) {
+export function MyTabs() {
+  const navigation = useNavigation();
+  // const goToMessages = ({navigation}) => navigation.navigate('Message');
+
   return (
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: '#009F93',
+
         tabBarInactiveTintColor: '#222',
         tabBarShowLabel: false,
+
         tabBarItemStyle: {
           backgroundColor: '#ffffff',
-          borderRadius: 50,
+          borderRadius: 20,
           margin: 10,
+
+          //add inner shadow here
+
+          shadowColor: '#000',
+          shadowOffset: {
+            width: 0,
+            height: 12,
+          },
+          shadowOpacity: 0.58,
+          shadowRadius: 16.0,
+
+          elevation: 24,
         },
 
         tabBarStyle: {
           backgroundColor: '#009F93',
+
           height: 70,
           position: 'absolute',
           margin: 60,
-          borderRadius: 50,
-          elevation: 4,
+          borderRadius: 20,
+
+          // add shadow here
+
+          shadowColor: '#000',
+          shadowOffset: {
+            width: 0,
+            height: 12,
+          },
+          shadowOpacity: 0.58,
+          shadowRadius: 16.0,
+
+          elevation: 24,
         },
         headerStyle: {
-          height: 100,
+          height: 90,
         },
-        headerRight: ({navigation}) => (
-          <TouchableOpacity
-            style={{
-              marginRight: 30,
-            }}>
+
+        headerRight: () => (
+          // <Button>
+          // <TouchableOpacity>
+          //   <MaterialCommunityIcons
+          //     // onPress={() => navigation.navigate('Message')}
+          //     onPress={() => navigation.navigate('HistoryList')}
+          //     style={{
+          //       marginRight: 30,
+          //     }}
+          //     name="comment-processing"
+          //     color="#009F93"
+          //     size={40}
+          //   />
+          // </TouchableOpacity>
+          // </Button>
+
+          <Button
+            onPress={() => navigation.navigate('Message')}
+            title="Go to notifications">
             <MaterialCommunityIcons
-              onPress={() => navigation.navigate('Message')}
+              // onPress={() => navigation.navigate('Message')}
+              //  onPress={() => navigation.navigate('HistoryList')}
+              style={{
+                marginRight: 30,
+              }}
               name="comment-processing"
               color="#009F93"
               size={40}
             />
-          </TouchableOpacity>
+          </Button>
         ),
-        headerLeft: () => (
-          <TouchableOpacity
-            style={{
-              marginLeft: 20,
-            }}
-          >
-            <MaterialCommunityIcons
-              name="arrow-left"
-              color="#009F93"
-              size={30}
-            />
-          </TouchableOpacity>
-        ),
+        // headerLeft: () => (
+        //   <TouchableOpacity
+
+        //   onPress={() => navigation.navigate.back()}
+
+        //     style={{
+        //       marginLeft: 20,
+        //     }}>
+        //     <MaterialCommunityIcons
+        //       name="arrow-left"
+        //       color="#009F93"
+        //       size={30}
+        //     />
+        //   </TouchableOpacity>
+        // ),
       }}>
       <Tab.Screen
         name="History"
         component={History}
         options={{
+          tabBarButtonColor: '#009F93',
+
           tabBarIcon: ({color, size, focused}) => (
-            <View>
-              <TouchableOpacity onPress={console.log('history clicked ')}>
-                <MaterialCommunityIcons
-                  name="history"
-                  color={color}
-                  size={focused ? 40 : 30}
-                />
-              </TouchableOpacity>
-            </View>
+            <MaterialCommunityIcons
+              onPress={() => console.log('history clicked ')}
+              name="history"
+              color={color}
+              size={focused ? 40 : 25}
+            />
           ),
           tabBarBadge: 3,
 
@@ -95,11 +148,11 @@ export function MyTabs({navigation}) {
           headerShown: false,
           tabBarIcon: ({color, size, focused}) => (
             <View>
-              <TouchableOpacity onPress={console.log('home bar ')}>
+              <TouchableOpacity onPress={() => console.log('home bar ')}>
                 <MaterialCommunityIcons
                   name="circle-slice-8"
                   color={color}
-                  size={focused ? 40 : 30}
+                  size={focused ? 40 : 25}
                 />
               </TouchableOpacity>
             </View>
@@ -112,11 +165,11 @@ export function MyTabs({navigation}) {
         options={{
           tabBarIcon: ({color, size, focused}) => (
             <View>
-              <TouchableOpacity onPress={console.log('profile clicked ')}>
+              <TouchableOpacity onPress={() => console.log('profile clicked ')}>
                 <MaterialCommunityIcons
                   name="account"
                   color={color}
-                  size={focused ? 40 : 30}
+                  size={focused ? 40 : 25}
                 />
               </TouchableOpacity>
             </View>

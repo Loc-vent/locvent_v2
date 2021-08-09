@@ -12,18 +12,6 @@ import {
 import {Avatar, Button, Card, Title, Paragraph} from 'react-native-paper';
 import {HistoryData, userData} from '../Data/Data';
 
-// function passData(data) {
-//   const [activeData, setActiveData] = useState({
-//     id: '',
-//     Latitude: '',
-//     Longitude: '',
-//     date: '',
-//     description: '',
-//   });
-//   setActiveData(data);
-
-//   const [avtiveId, setActiveID] = useState(0);
-// }
 
 const HistoryCard = ({
   id,

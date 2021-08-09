@@ -14,7 +14,7 @@ export default function Profile() {
       <View style={styles.fullContainer}>
         <View style={styles.topContainer}>
           <TouchableOpacity style={styles.avatar}>
-            <Avatar.Image size={150} source={require('../Assets/guy.jpeg')} />
+            <Avatar.Image size={120} source={require('../Assets/guy.jpeg')} />
           </TouchableOpacity>
 
           <View style={styles.box1}>
@@ -122,7 +122,7 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     alignContent: 'center',
-    margin: 40,
+    margin: 30,
   },
   nameContainer: {
     fontSize: 20,

@@ -3,6 +3,7 @@ import {View, Text} from 'react-native';
 import HomeScreen from '../Screens/HomeScreens/HomeScreen';
 import ReportForm from '../Screens/HomeScreens/ReportForm';
 import ReportSuccess from '../Screens/HomeScreens/ReportSuccess';
+import Message from '../Screens/MessageScreens/Message';
 
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -38,6 +39,30 @@ export default function Home({navigation}) {
         }
         name="ReportSucceess"
         component={ReportSuccess}
+      />
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          headerTransparent: true,
+          headerTitleStyle: {
+            color: '#009F93',
+            fontSize: 40,
+            letterSpacing: 4,
+            fontWeight: '100',
+          },
+          headerStyle: {
+            backgroundColor: '#009F93',
+            height: 120,
+          },
+          headerLeftContainerStyle: {
+            color: '#009F93',
+            fontSize: 40,
+            margin: 10,
+            // backgroundColor:"#ffff",
+          },
+        }}
+        name="Message"
+        component={Message}
       />
     </Stack.Navigator>
   );
