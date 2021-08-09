@@ -81,17 +81,15 @@ export const HistoryData = [
   },
 ];
 
-export const userData = [
-  {
-    userId: '23',
-    firstName: '1 first name ',
-    lastName: '1 last name ',
-    dateOfBirth: '1 date of birth ',
-    phoneNumber: '1 90909878787',
-    location: '1 location ,location',
-    dateJoined: '1 2/33/33 ',
-    totalReports: '134',
-    about:
-      '  this text this text this text  this text this text this text  this text this text this text  this text this text this text    ',
-  },
-];
+export const userData = {
+  userId: '23',
+  firstName: 'BisrateGebriel',
+  lastName: 'Feseha',
+  dateOfBirth: 'Jan-12-12 ',
+  phoneNumber: '1 90909878787',
+  location: '1 location ,location',
+  dateJoined: '2/33/33',
+  totalReports: '134',
+  about:
+    '  this text this text this text  this text this text this text  this text this text this text  this text this text this text    ',
+};
