@@ -1,8 +1,13 @@
-
 import React from 'react';
-import {View, TouchableOpacity, TouchableWithoutFeedback , Text} from 'react-native';
+import {
+  View,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  Text,
+} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 import {useCamera} from 'react-native-camera-hooks';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 export default function HomeScreen({initialProps}) {
   const [
@@ -14,57 +19,56 @@ export default function HomeScreen({initialProps}) {
       facesDetected,
       recordVideo,
       setIsRecording,
+      takePicture,
     },
   ] = useCamera(initialProps);
 
   return (
     <View style={{flex: 1}}>
       <RNCamera
+        useFlash={true}
         ref={cameraRef}
-        // autoFocusPointOfInterest={autoFocusPoint.normalized}
+        autoFocusPointOfInterest={autoFocusPoint.normalized}
         type={type}
         ratio={ratio}
         style={{flex: 1}}
-        // autoFocus={autoFocus}
+        autoFocus={autoFocus}
         // onTextRecognized={textRecognized}
         // onFacesDetected={facesDetected}
-      />
-
-      {/* <TouchableWithoutFeedback
-        style={{
-          flex: 1,
-        }}
-        onPress={touchToFocus}
-      /> */}
-
-      <TouchableOpacity
-        testID="button"
-        onPress={toggleFacing}
-        style={{width: '100%', height: 45}}>
-
-<Text>
-
-{type}
-
-</Text>
-      </TouchableOpacity>
-
-      {!isRecording && (
+        onPictureSaved={takePicture}>
         <TouchableOpacity
+          style={styles.shutterButton}
           onPress={async () => {
             try {
               setIsRecording(true);
-              const data = await recordVideo();
+              const data = await takePicture();
+              console.log(data);
               console.warn(data);
             } catch (error) {
               console.warn(error);
             } finally {
               setIsRecording(false);
             }
-          }}
-          style={{width: '100%', height: 45}}
-        />
-      )}
+          }}>
+          <FontAwesome
+            // style={styles.shutterButten}
+            name="circle-o"
+            size={90}
+            color="#009F93"
+          />
+        </TouchableOpacity>
+      </RNCamera>
     </View>
   );
 }
+
+const styles = {
+  shutterButton: {
+    flex: 1,
+    paddingBottom: 100,
+    margin: 50,
+    justifyContent: 'flex-end',
+    alignContent: 'flex-end',
+    alignItems: 'center',
+  },
+};
