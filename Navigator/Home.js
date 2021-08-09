@@ -16,7 +16,7 @@ export default function Home({navigation}) {
       }}>
       <Stack.Screen
         options={{
-          // headerShown: false,
+          headerShown: false,
         }}
         name="HomeScreen"
         component={HomeScreen}
