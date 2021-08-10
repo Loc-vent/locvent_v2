@@ -1,37 +1,31 @@
-import React , {useState , useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {Button} from 'react-native-paper';
 import * as Animatable from 'react-native-animatable';
 import {ActivityIndicator, Colors} from 'react-native-paper';
+import LogoContainer from '../../components/LogoContainer';
+
 export default function SplashScreen({navigation}) {
-  //set timer to load log in screen 
-  setInterval(()=>{
-    navigation.navigate('LoginScreen')
-  }, 3000)
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate('LoginScreen');
+    }, 1000);
+  }, [navigation]);
 
   return (
     <View style={styles.parentContainer}>
-      <View style={styles.logoContainer}>
-        <TouchableOpacity>
-          <View style={styles.imagecontainer}>
-            <Image
-              style={{
-                height: 300,
-                width: 250,
-              }}
-              source={require('../../Images/LOGO.png')}
-            />
-          </View>
-        </TouchableOpacity>
+      <View
+        style={styles.logoContainer}
+        onPress={() => navigation.navigate('LoginScreen')}>
+        <LogoContainer />
       </View>
+
       <View>
         <ActivityIndicator animating={true} color="#009F93" size={75} />
       </View>
     </View>
   );
 }
-
-
 
 const styles = {
   imagecontainer: {
@@ -44,12 +38,12 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     height: 300,
-    width: 290,
-    paddingBottom: 50,
+    width: 300,
+    paddingBottom: 90,
     alignSelf: 'center',
 
-    borderRadius:60,
-    borderBottomColor:'#222222',
+    borderRadius: 60,
+    borderBottomColor: '#222222',
 
     //shadows
     shadowColor: '#000',
