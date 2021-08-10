@@ -10,7 +10,7 @@ import {useNavigation} from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
-export function MyTabs() {
+export function BottomTabs() {
   const navigation = useNavigation();
 
   return (
