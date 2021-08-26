@@ -17,7 +17,7 @@ export default function Home({navigation}) {
         options={{
           // headerShown: false,
         }}
-        name="Message"
+        name="information board"
         component={Message}
       />
       <Stack.Screen

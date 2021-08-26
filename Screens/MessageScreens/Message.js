@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
+import MessageNoticePage from '../../components/MessageNoticePage';
 
 export default function Message() {
-  const [activeTab, setActiveTab] = useState('NEWS');
+  const [activeTab, setActiveTab] = useState('MESSAGES');
 
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
@@ -11,15 +12,15 @@ export default function Message() {
   return (
     <View>
       <View style={styles.tabContainer}>
-        <TouchableOpacity onPress={() => toggle('NEWS')}>
+        <TouchableOpacity onPress={() => toggle('MESSAGES')}>
           <Text
             //    style={styles.tabContainerTexts}
             style={
-              activeTab === 'NEWS'
+              activeTab === 'MESSAGES'
                 ? styles.tabContainerTexts
                 : styles.tabContainerTextsActive
             }>
-            News
+            MESSAGES
           </Text>
         </TouchableOpacity>
 
@@ -36,16 +37,17 @@ export default function Message() {
       </View>
 
       <View>
-        <Text>this : {activeTab}</Text>
+        {/* <Text>this : {activeTab}</Text> */}
       </View>
 
-      {activeTab === 'NEWS' ? (
+      {activeTab === 'MESSAGES' ? (
         <View>
-          <Text> this is news component </Text>
+          <Text> this is MESSAGES component </Text>
         </View>
-      ): activeTab === 'NOTICE' ? (
+      ) : activeTab === 'NOTICE' ? (
         <View>
-          <Text> this is Notice component </Text>
+          <MessageNoticePage />
+
         </View>
       ) : null}
     </View>
