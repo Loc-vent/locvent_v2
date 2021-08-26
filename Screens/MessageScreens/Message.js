@@ -1,56 +1,61 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, useWindowDimensions} from 'react-native';
+import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import MessageNoticePage from '../../components/MessageNoticePage';
+
+import ScrollableTabView, {
+  DefaultTabBar,
+} from 'react-native-scrollable-tab-view';
 
 export default function Message() {
   const [activeTab, setActiveTab] = useState('MESSAGES');
-
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);
   };
 
+  const FirstRoute = () => (
+    <View style={{flex: 1, backgroundColor: 'light-grey'}} />
+  );
+  const SecondRoute = () => (
+    <View style={{flex: 1, backgroundColor: 'light-grey'}} />
+  );
+  const renderScene = SceneMap({
+    first: FirstRoute,
+    second: MessageNoticePage,
+  });
+
+  const layout = useWindowDimensions();
+  const [index, setIndex] = useState(0);
+
+  const [routes] = useState([
+    {
+      key: 'first',
+      title: 'Messages',
+    },
+    {key: 'second', title: 'Notice'},
+  ]);
+
+  const renderTabBar = props => (
+    <TabBar
+      {...props}
+      indicatorStyle={{backgroundColor: 'white', height: 4}}
+      style={{
+        backgroundColor: '#009F93',
+        height: 50,
+      }}
+    />
+  );
   return (
-    <View>
-      <View style={styles.tabContainer}>
-        <TouchableOpacity onPress={() => toggle('MESSAGES')}>
-          <Text
-            //    style={styles.tabContainerTexts}
-            style={
-              activeTab === 'MESSAGES'
-                ? styles.tabContainerTexts
-                : styles.tabContainerTextsActive
-            }>
-            MESSAGES
-          </Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity onPress={() => toggle('NOTICE')}>
-          <Text
-            style={
-              activeTab === 'NOTICE'
-                ? styles.tabContainerTexts
-                : styles.tabContainerTextsActive
-            }>
-            Notice
-          </Text>
-        </TouchableOpacity>
-      </View>
-
-      <View>
-        {/* <Text>this : {activeTab}</Text> */}
-      </View>
-
-      {activeTab === 'MESSAGES' ? (
-        <View>
-          <Text> this is MESSAGES component </Text>
-        </View>
-      ) : activeTab === 'NOTICE' ? (
-        <View>
-          <MessageNoticePage />
-
-        </View>
-      ) : null}
-    </View>
+    <TabView
+      renderTabBar={renderTabBar}
+      activeColor={'green'}
+      inactiveColor={'pink'}
+      style={{marginTop: 100, backgroundColor: 'white'}}
+      navigationState={{index, routes}}
+      renderScene={renderScene}
+      onIndexChange={setIndex}
+      initialLayout={{width: layout.width, backgroundColor: 'pink'}}
+    />
   );
 }
 

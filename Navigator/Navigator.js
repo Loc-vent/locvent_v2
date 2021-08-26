@@ -17,13 +17,11 @@ export function BottomTabs() {
   const navigation = useNavigation();
   const [isLoggedIn, setLoggenIn] = useState(false);
 
-
   return (
     <Tab.Navigator
       initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: '#009F93',
-
         tabBarInactiveTintColor: '#222',
         tabBarShowLabel: false,
 
@@ -31,7 +29,6 @@ export function BottomTabs() {
           backgroundColor: '#ffffff',
           borderRadius: 20,
           margin: 10,
-
           //add inner shadow here
 
           shadowColor: '#000',
@@ -41,18 +38,15 @@ export function BottomTabs() {
           },
           shadowOpacity: 0.58,
           shadowRadius: 16.0,
-
           elevation: 24,
         },
 
         tabBarStyle: {
           backgroundColor: '#009F93',
-
           height: 70,
           position: 'absolute',
           margin: 60,
           borderRadius: 20,
-
           // add shadow here
 
           shadowColor: '#000',

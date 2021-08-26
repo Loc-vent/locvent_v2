@@ -6,18 +6,18 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 export default function MessageNoticePage() {
   return (
     <View style={styles.container}>
-     <ScrollView>
-     <MessageNoticeCard />
-      <MessageNoticeCard />
-      <MessageNoticeCard />
-      <MessageNoticeCard />
-      <MessageNoticeCard />
-      <MessageNoticeCard />
-      <MessageNoticeCard />
-      <MessageNoticeCard />
-      <MessageNoticeCard />
-      <MessageNoticeCard />
-     </ScrollView>
+      <ScrollView>
+        <MessageNoticeCard />
+        <MessageNoticeCard />
+        <MessageNoticeCard />
+        <MessageNoticeCard />
+        <MessageNoticeCard />
+        <MessageNoticeCard />
+        <MessageNoticeCard />
+        <MessageNoticeCard />
+        <MessageNoticeCard />
+        <MessageNoticeCard />
+      </ScrollView>
     </View>
   );
 }
@@ -59,7 +59,8 @@ const styles = {
     padding: 20,
     backgroundColor: '#009F93',
     borderRadius: 10,
-    marginBottom: 10,
+    marginBottom: 5,
+    marginTop: 10,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

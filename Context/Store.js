@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useState, createContext} from 'react';
 
-export default function Store() {
-    return (
-        <div>
-            this is stroe page
-        </div>
-    )
+const initState = {
+  activeStation: {},
+  admin: false,
+};
+export const Context = createContext(initState);
+export default function Store({children}) {
+  const [state, setState] = useState(initState);
+  return <Context.Provider value={{...state}}>{children}</Context.Provider>;
 }

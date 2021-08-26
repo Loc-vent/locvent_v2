@@ -10,27 +10,32 @@ const Stack = createStackNavigator();
 export default function Home({navigation}) {
   return (
     <Stack.Navigator
+      headerShown={false}
       options={{
         initialRouteName: 'Message',
       }}>
       <Stack.Screen
         options={{
-          // headerShown: false,
+          headerShown: false,
         }}
-        name="information board"
-        component={Message}
+        name="Message"
+        // component={Message}
       />
       <Stack.Screen
-        options={{
-          // headerShown: false,
-        }}
+        options={
+          {
+            // headerShown: false,
+          }
+        }
         name="News"
         component={News}
       />
       <Stack.Screen
-        options={{
-          // headerShown: false,
-        }}
+        options={
+          {
+            // headerShown: false,
+          }
+        }
         name="NoticeBoard"
         component={NoticeBoard}
       />
