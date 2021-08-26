@@ -30,7 +30,13 @@ export default function AuthStack() {
         name="LoginScreen"
         component={LoginScreen}
       />
-      <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+      <Stack.Screen
+        options={{
+          headerShown: false,
+        }}
+        name="RegisterScreen"
+        component={RegisterScreen}
+      />
       <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       <Stack.Screen
         name="ConfirmForgotPassword"

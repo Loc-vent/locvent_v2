@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 
 export default function Message() {
-  const [activeTab, setActiveTab] = useState('0');
+  const [activeTab, setActiveTab] = useState('NEWS');
 
   const toggle = tab => {
     if (activeTab !== tab) setActiveTab(tab);

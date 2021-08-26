@@ -2,9 +2,12 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import LogoContainer from '../../components/LogoContainer';
 import {TextInput} from 'react-native-paper';
+import {useNavigation} from '@react-navigation/native';
 
-export default function LoginScreen({navigation}) {
+export default function LoginScreen() {
   const [text, setText] = React.useState('');
+  const navigation = useNavigation();
+
   return (
     <View style={styles.pageContainer}>
       <View style={styles.logoContainer}>
@@ -35,7 +38,7 @@ export default function LoginScreen({navigation}) {
 
       <TouchableOpacity
         style={styles.loginButton}
-        onPress={() => navigation.navigate('HomeScreen')}>
+        onPress={() => navigation.navigate('Message')}>
         <Text
           style={{
             color: '#fff',
@@ -108,7 +111,7 @@ const styles = {
   },
   loginButton: {
     backgroundColor: '#02C3BD',
-    height: '10%',
+    height: '8%',
     width: '40%',
 
     alignItems: 'center',

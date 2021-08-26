@@ -9,14 +9,14 @@ import AuthStack from './Navigator/Auth';
 import {Provider as PaperProvider} from 'react-native-paper';
 const Tab = createBottomTabNavigator();
 
-const App = () => {
+const App = ({navigation}) => {
   const [isLoggedIn, setLoggenIn] = useState(false);
 
   return (
     <PaperProvider>
       <NavigationContainer>
-        {isLoggedIn ? <BottomTabs /> : <AuthStack />}
-        {/* <BottomTabs/> */}
+        {/* {isLoggedIn ? <BottomTabs /> : <AuthStack />} */}
+        <BottomTabs/>
       </NavigationContainer>
     </PaperProvider>
   );
