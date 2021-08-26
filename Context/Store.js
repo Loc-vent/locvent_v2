@@ -80,7 +80,7 @@ const initState = {
     generalUsers: '',
     role: '',
     lastLogin: '',
-    notification: '',
+    notification: [],
   },
 
 };

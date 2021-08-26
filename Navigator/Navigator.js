@@ -22,13 +22,17 @@ export function BottomTabs() {
       initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: '#009F93',
-        tabBarInactiveTintColor: '#222',
+        tabBarAccessibilityLabel: 'pink',
+        tabBarInactiveTintColor: '#fff',
         tabBarShowLabel: false,
+        tabBarActiveBackgroundColor: 'white',
 
         tabBarItemStyle: {
-          backgroundColor: '#ffffff',
-          borderRadius: 20,
+          // backgroundColor: 'pink',
+          borderRadius: 50,
           margin: 10,
+          height: 50,
+          width: 30,
           //add inner shadow here
 
           shadowColor: '#000',
@@ -44,12 +48,14 @@ export function BottomTabs() {
         tabBarStyle: {
           backgroundColor: '#009F93',
           height: 70,
+          width: '90%',
+
           position: 'absolute',
-          margin: 60,
-          borderRadius: 20,
+          margin: 30,
+          borderRadius: 50,
           // add shadow here
 
-          shadowColor: '#000',
+          shadowColor: '#fff',
           shadowOffset: {
             width: 0,
             height: 12,
@@ -60,7 +66,7 @@ export function BottomTabs() {
           elevation: 24,
         },
         headerStyle: {
-          height: 90,
+          height: 100,
         },
 
         headerRight: () => (
@@ -89,7 +95,7 @@ export function BottomTabs() {
               onPress={() => console.log('history clicked ')}
               name="history"
               color={color}
-              size={focused ? 40 : 25}
+              size={focused ? 30 : 20}
             />
           ),
           tabBarBadge: 3,
@@ -116,7 +122,7 @@ export function BottomTabs() {
                 <MaterialCommunityIcons
                   name="circle-slice-8"
                   color={color}
-                  size={focused ? 40 : 25}
+                  size={focused ? 30 : 25}
                 />
               </TouchableOpacity>
             </View>
@@ -133,7 +139,7 @@ export function BottomTabs() {
                 <MaterialCommunityIcons
                   name="account"
                   color={color}
-                  size={focused ? 40 : 25}
+                  size={focused ? 30 : 25}
                 />
               </TouchableOpacity>
             </View>
