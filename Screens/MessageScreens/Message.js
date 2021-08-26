@@ -1,26 +1,12 @@
 import React, {useState} from 'react';
-import {View, useWindowDimensions} from 'react-native';
+import {useWindowDimensions} from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import MessageNoticePage from '../../components/MessageNoticePage';
-
-import ScrollableTabView, {
-  DefaultTabBar,
-} from 'react-native-scrollable-tab-view';
+import MessageScreen from './MessageScreen';
 
 export default function Message() {
-  const [activeTab, setActiveTab] = useState('MESSAGES');
-  const toggle = tab => {
-    if (activeTab !== tab) setActiveTab(tab);
-  };
-
-  const FirstRoute = () => (
-    <View style={{flex: 1, backgroundColor: 'light-grey'}} />
-  );
-  const SecondRoute = () => (
-    <View style={{flex: 1, backgroundColor: 'light-grey'}} />
-  );
   const renderScene = SceneMap({
-    first: FirstRoute,
+    first: MessageScreen,
     second: MessageNoticePage,
   });
 
@@ -28,10 +14,7 @@ export default function Message() {
   const [index, setIndex] = useState(0);
 
   const [routes] = useState([
-    {
-      key: 'first',
-      title: 'Messages',
-    },
+    {key: 'first', title: 'Messages'},
     {key: 'second', title: 'Notice'},
   ]);
 
@@ -58,43 +41,3 @@ export default function Message() {
     />
   );
 }
-
-const styles = {
-  tabContainer: {
-    flexDirection: 'row',
-    marginTop: 120,
-    justifyContent: 'space-evenly',
-
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 12,
-    },
-    shadowOpacity: 0.58,
-    shadowRadius: 16.0,
-
-    elevation: 24,
-  },
-
-  tabContainerTexts: {
-    fontSize: 30,
-    letterSpacing: 6,
-    color: '#009F93',
-
-    borderBottomWidth: 3,
-    paddingBottom: 20,
-
-    borderBottomColor: '#009F93',
-    marginBottom: 10,
-  },
-  tabContainerTextsActive: {
-    fontSize: 30,
-    color: '#009F93',
-  },
-  activeTab: {
-    fontSize: 40,
-  },
-  activeTabNot: {
-    fontSize: 20,
-  },
-};

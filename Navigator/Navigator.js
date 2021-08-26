@@ -28,11 +28,8 @@ export function BottomTabs() {
         tabBarActiveBackgroundColor: 'white',
 
         tabBarItemStyle: {
-          // backgroundColor: 'pink',
           borderRadius: 50,
           margin: 10,
-          height: 50,
-          width: 30,
           //add inner shadow here
 
           shadowColor: '#000',
@@ -48,11 +45,13 @@ export function BottomTabs() {
         tabBarStyle: {
           backgroundColor: '#009F93',
           height: 70,
-          width: '90%',
+          width: '100%',
 
-          position: 'absolute',
-          margin: 30,
-          borderRadius: 50,
+          position: 'relative',
+          margin: 0,
+          marginBottom: 0,
+
+          borderRadius: 10,
           // add shadow here
 
           shadowColor: '#fff',
@@ -88,8 +87,6 @@ export function BottomTabs() {
         name="History"
         component={History}
         options={{
-          tabBarButtonColor: '#009F93',
-
           tabBarIcon: ({color, size, focused}) => (
             <MaterialCommunityIcons
               onPress={() => console.log('history clicked ')}

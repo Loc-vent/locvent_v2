@@ -41,8 +41,9 @@ export default function Home({navigation}) {
       />
       <Stack.Screen
         options={{
-          headerShown: true,
+          // headerShown: true,
           headerTransparent: true,
+          headerTitle: 'information board',
           headerTitleStyle: {
             color: '#009F93',
             fontSize: 40,
