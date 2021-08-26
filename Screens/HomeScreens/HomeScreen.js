@@ -51,7 +51,7 @@ export default function HomeScreen({initialProps}) {
           <FontAwesome
             name="circle-o"
             size={90}
-            color="#009F93"
+            color="#fff"
           />
         </TouchableOpacity>
       </RNCamera>
@@ -62,8 +62,8 @@ export default function HomeScreen({initialProps}) {
 const styles = {
   shutterButton: {
     flex: 1,
-    paddingBottom: 100,
-    margin: 50,
+    // paddingBottom: 100,
+    margin: 10,
     justifyContent: 'flex-end',
     alignContent: 'flex-end',
     alignItems: 'center',
