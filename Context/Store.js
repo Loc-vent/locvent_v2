@@ -3,22 +3,43 @@ import React, {useState, createContext} from 'react';
 const initState = {
   user: {
     id: '',
-    userName: '',
-    phoneNumber: '',
     firstName: '',
     lastName: '',
-    gender: '',
-    centralAdmin: '',
-    experts: '',
-    generalUsers: '',
-    role: '',
-    lastLogin: '',
-    notification: [],
+    userName: '',
+    phoneNumber: '',
+
+    // gender: '',
+    // centralAdmin: '',
+    // experts: '',
+    // generalUsers: '',
+    // role: '',
+    // lastLogin: '',
+    // notification: [],
   },
-  adminUser :{
-    userName:'admin',
-    password:'adminadmin'
+  loggedInUser: {
+    // user: {
+      // id: null,
+      // firstName: '',
+      // lastName: '',
+      // userName: '',
+      // phoneNumber: '',
+      // gender: '',
+      // centralAdmin: '',
+      // experts: '',
+      // generalUsers: '',
+      // role: '',
+      // lastLogin: '',
+      // notification: [],
+    // },
   },
+  adminUser: {
+    userName: 'admin',
+    password: 'adminadmin',
+  },
+  isLoggedIn: false,
+  isAdmin: false,
+  isExpert: false,
+  isGeneralUser: false,
   broadCast: {
     id: '',
     message: '',
@@ -88,7 +109,10 @@ const initState = {
   },
 };
 export const Context = createContext(initState);
+
 export default function Store({children}) {
   const [state, setState] = useState(initState);
-  return <Context.Provider value={{...state}}>{children}</Context.Provider>;
+  return (
+    <Context.Provider value={[state, setState]}>{children}</Context.Provider>
+  );
 }

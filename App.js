@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import 'react-native-gesture-handler';
 import {StyleSheet, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
@@ -8,28 +8,42 @@ import AuthStack from './Navigator/Auth';
 import LoadingScreen from './components/LoadingScreen';
 
 import {Provider as PaperProvider} from 'react-native-paper';
-import {set} from 'react-native-reanimated';
-const Tab = createBottomTabNavigator();
+import Store, {Context} from './Context/Store';
 
 const App = ({navigation}) => {
-  const [isLoggedIn, setLoggenIn] = useState(true);
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoggenIn(!isLoggedIn);
-      // setUser({});
-    }, 1000);
-  }, []);
-
   return (
-    <PaperProvider>
-      <NavigationContainer>
-        {isLoggedIn ? <LoadingScreen /> : user ? <BottomTabs /> : <AuthStack />}
-      </NavigationContainer>
-    </PaperProvider>
+    <Store>
+      <MiddleChild />
+    </Store>
   );
 };
 
 export default App;
 
-const styles = StyleSheet.create({});
+function MiddleChild({navigation}) {
+  const [state, setState] = useContext(Context);
+  // console.log;
+  const [isLoggedIn, setLoggenIn] = useState(true);
+  const [user, setUser] = useState(null);
+  useEffect((state) => {
+    setTimeout(() => {
+      setLoggenIn(!isLoggedIn);
+      setUser({});
+    }, 1000);
+  }, []);
+  return (
+
+      <PaperProvider>
+        <NavigationContainer>
+          {isLoggedIn ? (
+            <LoadingScreen />
+          ) : user ? (
+            <BottomTabs />
+          ) : (
+            <AuthStack />
+          )}
+        </NavigationContainer>
+      </PaperProvider>
+
+  );
+}

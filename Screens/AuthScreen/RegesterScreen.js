@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -11,14 +11,45 @@ import DatePicker from 'react-native-date-picker';
 import LogoContainer from '../../components/LogoContainer';
 import {TextInput} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
+import {Context} from '../../Context/Store';
 
 export default function RegesterScreen() {
-  const [text, setText] = React.useState('');
-  const navigation = useNavigation();
+  const [state, setState] = useContext(Context);
+  console.log('global state : ', state.user);
+
+  //
+  //
+  //   const navigation = useNavigation();
+  //   const layout = useWindowDimensions();
   const [date, setDate] = useState(new Date());
   const [Gender, setGender] = useState();
-  const layout = useWindowDimensions();
-  // console.log(layout);
+  //
+  //
+
+  function randomUserId(max) {
+    return;
+  }
+
+  function handleNewUserRegestration(name, value) {
+    setState({
+      ...state,
+      user: {
+        ...state.user,
+        id: Math.floor(Math.random() * 8000),
+        [name]: value,
+      },
+    });
+  }
+
+  function regesterandLogin() {
+    setState({
+      ...state,
+      loggedInUser: state.user,
+      isLoggedIn: true,
+    });
+  }
+  console.log(' regesterd user ', state.loggedInUser , state.isLoggedIn);
+
   return (
     <View style={styles.pageContainer}>
       <View style={styles.logoContainer}>
@@ -30,17 +61,39 @@ export default function RegesterScreen() {
             theme={styles.inputStyle}
             underlineColor="#009F93"
             underlineColorAndroid="#009F93"
-            label="Full Name"
-            value={text}
-            onChangeText={text => setText(text)}
+            label="first name"
+            onChangeText={firstName =>
+              handleNewUserRegestration('firstName', firstName)
+            }
           />
           <TextInput
             theme={styles.inputStyle}
             underlineColor="#009F93"
             underlineColorAndroid="#009F93"
+            label="last name"
+            onChangeText={lastNmae =>
+              handleNewUserRegestration('lastName', lastNmae)
+            }
+          />
+          <TextInput
+            theme={styles.inputStyle}
+            underlineColor="#009F93"
+            underlineColorAndroid="#009F93"
+            label="user name"
+            onChangeText={userName =>
+              handleNewUserRegestration('userNmae', userName)
+            }
+          />
+          <TextInput
+            theme={styles.inputStyle}
+            autoCompleteType="tel"
+            keyboardType="numeric"
+            underlineColor="#009F93"
+            underlineColorAndroid="#009F93"
             label="Phone Number"
-            value={text}
-            onChangeText={text => setText(text)}
+            onChangeText={phoneNumber =>
+              handleNewUserRegestration('phoneNumber', phoneNumber)
+            }
           />
 
           <View>
@@ -53,7 +106,9 @@ export default function RegesterScreen() {
               collapsable={true}
               textColor="#009F93"
               date={date}
-              onDateChange={setDate}
+              onDateChange={setDate =>
+                handleNewUserRegestration('birthDate', setDate)
+              }
             />
             <Text
               style={{
@@ -76,7 +131,10 @@ export default function RegesterScreen() {
               marginTop: 10,
             }}
             selectedValue={Gender}
-            onValueChange={(itemValue, itemIndex) => setGender(itemValue)}>
+            onValueChange={(itemValue, itemIndex) =>
+              setGender(itemValue) &&
+              handleNewUserRegestration('gender', itemValue)
+            }>
             <Picker.Item label="Male" value="Male" />
             <Picker.Item label="Female" value="Female" />
           </Picker>
@@ -85,7 +143,7 @@ export default function RegesterScreen() {
 
       <TouchableOpacity
         style={styles.loginButton}
-        onPress={() => navigation.navigate('Message')}>
+        onPress={() => regesterandLogin()}>
         <Text
           style={{
             color: '#009F93',
@@ -113,19 +171,13 @@ const styles = {
   },
   pageContainer: {
     flex: 1,
-    // alignContent: 'center',
-    // justifyContent: 'center',
     alignItems: 'center',
   },
-  fontContainer: {
-    // alignContent: 'center',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-  },
+  fontContainer: {},
   inputStyle: {
     colors: {
       text: '#009F93',
-      accent: '#ffffff',
+      accent: '#009F93',
       primary: '#009F93',
       placeholder: '#009F93',
       background: 'transparent',
