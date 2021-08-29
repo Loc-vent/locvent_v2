@@ -1,6 +1,24 @@
 import React, {useState, createContext} from 'react';
 
 const initState = {
+  user: {
+    id: '',
+    userName: '',
+    phoneNumber: '',
+    firstName: '',
+    lastName: '',
+    gender: '',
+    centralAdmin: '',
+    experts: '',
+    generalUsers: '',
+    role: '',
+    lastLogin: '',
+    notification: [],
+  },
+  adminUser :{
+    userName:'admin',
+    password:'adminadmin'
+  },
   broadCast: {
     id: '',
     message: '',
@@ -68,21 +86,6 @@ const initState = {
     reportPhotoLocation: '',
     DdetectedLocust: '',
   },
-  user: {
-    id: '',
-    userName: '',
-    phoneNumber: '',
-    firstName: '',
-    lastName: '',
-    gender: '',
-    centralAdmin: '',
-    experts: '',
-    generalUsers: '',
-    role: '',
-    lastLogin: '',
-    notification: [],
-  },
-
 };
 export const Context = createContext(initState);
 export default function Store({children}) {

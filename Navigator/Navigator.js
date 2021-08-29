@@ -9,8 +9,7 @@ import {Button} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-
-import { AnimatedTabBarNavigator } from "react-native-animated-nav-tab-bar";
+import {AnimatedTabBarNavigator} from 'react-native-animated-nav-tab-bar';
 const Tabs = AnimatedTabBarNavigator();
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
