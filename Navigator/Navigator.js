@@ -22,50 +22,30 @@ export function BottomTabs() {
       initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: '#009F93',
-        tabBarAccessibilityLabel: 'pink',
-        tabBarInactiveTintColor: '#fff',
+        tabBarBackgroundColor: '#fff',
+
+        tabBarInactiveTintColor: 'silver',
+
         tabBarShowLabel: false,
-        tabBarActiveBackgroundColor: 'white',
 
         tabBarItemStyle: {
-          borderRadius: 50,
-          margin: 10,
-          //add inner shadow here
-
-          shadowColor: '#000',
-          shadowOffset: {
-            width: 0,
-            height: 12,
-          },
-          shadowOpacity: 0.58,
-          shadowRadius: 16.0,
-          elevation: 24,
+          // backgroundColor: '#fff',
+          // borderRadius: 20,
+          // marginBottom: 10,
+          // marginTop: 10,
+          // marginLeft: 30,
+          // marginRight: 30,
+          // borderColor: '#009F93',
+          // borderWidth: 3,
         },
 
         tabBarStyle: {
-          backgroundColor: '#009F93',
+          backgroundColor: '#fff',
           height: 70,
           width: '100%',
-
-          position: 'relative',
-          margin: 0,
-          marginBottom: 0,
-
-          borderRadius: 10,
-          // add shadow here
-
-          shadowColor: '#fff',
-          shadowOffset: {
-            width: 0,
-            height: 12,
-          },
-          shadowOpacity: 0.58,
-          shadowRadius: 16.0,
-
-          elevation: 24,
         },
         headerStyle: {
-          height: 100,
+          height: 80,
         },
 
         headerRight: () => (
@@ -89,16 +69,15 @@ export function BottomTabs() {
         options={{
           tabBarIcon: ({color, size, focused}) => (
             <MaterialCommunityIcons
+              style={focused ? styles.iconFocused : styles.iconNotFocused}
               onPress={() => console.log('history clicked ')}
               name="history"
-              color={color}
               size={focused ? 30 : 20}
             />
           ),
           tabBarBadge: 3,
-
           headerTitleStyle: {
-            fontSize: 40,
+            fontSize: 30,
             fontFamily: 'Arial',
             padding: 20,
             color: '#009F93',
@@ -117,8 +96,8 @@ export function BottomTabs() {
             <View>
               <TouchableOpacity onPress={() => console.log('home bar ')}>
                 <MaterialCommunityIcons
+                  style={focused ? styles.iconFocused : styles.iconNotFocused}
                   name="circle-slice-8"
-                  color={color}
                   size={focused ? 30 : 25}
                 />
               </TouchableOpacity>
@@ -135,7 +114,7 @@ export function BottomTabs() {
               <TouchableOpacity onPress={() => console.log('profile clicked ')}>
                 <MaterialCommunityIcons
                   name="account"
-                  color={color}
+                  style={focused ? styles.iconFocused : styles.iconNotFocused}
                   size={focused ? 30 : 25}
                 />
               </TouchableOpacity>
@@ -143,7 +122,7 @@ export function BottomTabs() {
           ),
           headerTransparent: true,
           headerTitleStyle: {
-            fontSize: 50,
+            fontSize: 30,
             fontFamily: 'Arial',
             padding: 20,
             color: '#009F93',
@@ -154,3 +133,28 @@ export function BottomTabs() {
     </Tab.Navigator>
   );
 }
+
+const styles = {
+  iconFocused: {
+    color: '#009F93',
+    backgroundColor: '#fff',
+    paddingRight: 40,
+    paddingLeft: 40,
+    paddingBottom: 2,
+    paddingTop: 7,
+    borderRadius: 10,
+    borderColor: '#009F93',
+    borderWidth: 3,
+  },
+  iconNotFocused: {
+    color: 'silver',
+    backgroundColor: '#fff',
+    paddingRight: 25,
+    paddingLeft: 25,
+    paddingBottom: 2,
+    paddingTop: 7,
+    borderRadius: 10,
+    borderColor: 'silver',
+    borderWidth: 3,
+  },
+};

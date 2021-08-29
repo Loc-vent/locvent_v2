@@ -12,7 +12,6 @@ import {
 import {Avatar, Button, Card, Title, Paragraph} from 'react-native-paper';
 import {HistoryData, userData} from '../Data/Data';
 
-
 const HistoryCard = ({
   id,
   Latitude,
@@ -50,26 +49,28 @@ export default HistoryCard;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: StatusBar.currentHeight || 0,
-    borderRadius: 20,
-    backgroundColor: '#009F93',
-    color: '#fff',
-    textDecorationColor: '#fff',
-    textShadowColor: '#fff',
-
+    margin: StatusBar.currentHeight  - 10|| 0,
+    borderRadius: 13,
+    backgroundColor: '#fff',
+    borderRightWidth: 10,
+    borderLeftWidth: 10,
+    borderLeftColor: "#009F93",
+    borderColor:"#009F93",
+    color: '#009F93',
+    textDecorationColor: '#009F93',
+    textShadowColor: '#009F93',
     // shadow
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 8,
+      height: 2,
     },
     shadowOpacity: 0.44,
-    shadowRadius: 10.32,
-
-    elevation: 16,
+    shadowRadius: 1.32,
+    elevation: 2,
   },
   texts: {
-    color: '#fff',
+    color: '#009F93',
     fontSize: 19,
     fontFamily: 'Comfortaa',
     letterSpacing: 0.5,

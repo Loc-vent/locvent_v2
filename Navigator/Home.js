@@ -41,23 +41,22 @@ export default function Home({navigation}) {
       />
       <Stack.Screen
         options={{
-          // headerShown: true,
+
           headerTransparent: true,
           headerTitle: 'information board',
           headerTitleStyle: {
             color: '#009F93',
-            fontSize: 40,
-            letterSpacing: 4,
+            fontSize: 30,
+            letterSpacing: 2,
             fontWeight: '100',
           },
           headerStyle: {
             backgroundColor: '#009F93',
-            height: 120,
+            height: 100,
           },
           headerLeftContainerStyle: {
             color: '#009F93',
-            fontSize: 40,
-            margin: 10,
+            fontSize: 10,
           },
         }}
         name="Message"

@@ -39,7 +39,7 @@ function MessageNoticeCard() {
           onPress={() => {
             console.log('notice clear button');
           }}>
-          <MaterialCommunityIcons name="close" color="red" size={30} />
+          <MaterialCommunityIcons name="close" color="#532" size={20} />
         </TouchableOpacity>
       </View>
     </View>
@@ -57,7 +57,8 @@ const styles = {
   noticeCard: {
     width: 450,
     padding: 20,
-    backgroundColor: '#009F93',
+
+    backgroundColor: 'silver',
     borderRadius: 10,
     marginBottom: 5,
     marginTop: 10,
