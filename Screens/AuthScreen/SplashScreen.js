@@ -21,7 +21,7 @@ export default function SplashScreen({navigation}) {
       </View>
 
       <View>
-        <ActivityIndicator animating={true} color="#009F93" size={75} />
+        <ActivityIndicator animating={true} color="#009F93" size={35} />
       </View>
     </View>
   );
@@ -31,29 +31,15 @@ const styles = {
   imagecontainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 200,
+    alignContent: 'space-around',
+
   },
   logoContainer: {
-    backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 300,
-    width: 300,
-    paddingBottom: 90,
     alignSelf: 'center',
-
-    borderRadius: 60,
-    borderBottomColor: '#222222',
-
-    //shadows
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 12,
-    },
     shadowOpacity: 0.58,
     shadowRadius: 16.0,
-
     elevation: 24,
   },
   parentContainer: {

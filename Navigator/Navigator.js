@@ -7,9 +7,11 @@ import Profile from './Profile';
 import {TouchableOpacity, View, Text} from 'react-native';
 import {Button} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
-
 import {createStackNavigator} from '@react-navigation/stack';
 
+
+import { AnimatedTabBarNavigator } from "react-native-animated-nav-tab-bar";
+const Tabs = AnimatedTabBarNavigator();
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -23,22 +25,8 @@ export function BottomTabs() {
       screenOptions={{
         tabBarActiveTintColor: '#009F93',
         tabBarBackgroundColor: '#fff',
-
         tabBarInactiveTintColor: 'silver',
-
         tabBarShowLabel: false,
-
-        tabBarItemStyle: {
-          // backgroundColor: '#fff',
-          // borderRadius: 20,
-          // marginBottom: 10,
-          // marginTop: 10,
-          // marginLeft: 30,
-          // marginRight: 30,
-          // borderColor: '#009F93',
-          // borderWidth: 3,
-        },
-
         tabBarStyle: {
           backgroundColor: '#fff',
           height: 70,

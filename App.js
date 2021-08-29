@@ -15,8 +15,8 @@ const App = ({navigation}) => {
   return (
     <PaperProvider>
       <NavigationContainer>
-        {/* {isLoggedIn ? <BottomTabs /> : <AuthStack />} */}
-        <BottomTabs/>
+        {isLoggedIn ? <BottomTabs /> : <AuthStack />}
+        {/* <BottomTabs/> */}
       </NavigationContainer>
     </PaperProvider>
   );

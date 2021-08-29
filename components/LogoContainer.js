@@ -8,8 +8,8 @@ export default function LogoContainer() {
         <View style={styles.imagecontainer}>
           <Image
             style={{
-              height: 300,
-              width: 250,
+              height: 200,
+              width: 170,
             }}
             source={require('../Images/LOGO.png')}
           />

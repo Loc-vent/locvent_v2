@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity, useWindowDimensions} from 'react-native';
 import LogoContainer from '../../components/LogoContainer';
 import {TextInput} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
@@ -7,7 +7,8 @@ import {useNavigation} from '@react-navigation/native';
 export default function LoginScreen() {
   const [text, setText] = React.useState('');
   const navigation = useNavigation();
-
+  const layout = useWindowDimensions();
+  // console.log(layout);
   return (
     <View style={styles.pageContainer}>
       <View style={styles.logoContainer}>
@@ -15,9 +16,6 @@ export default function LoginScreen() {
       </View>
       <View style={styles.fontContainer}>
         <TextInput
-          style={{
-            marginBottom: 50,
-          }}
           theme={styles.inputStyle}
           underlineColor="#009F93"
           underlineColorAndroid="#009F93"
@@ -41,7 +39,7 @@ export default function LoginScreen() {
         onPress={() => navigation.navigate('Message')}>
         <Text
           style={{
-            color: '#fff',
+            color: '#009F93',
             fontSize: 40,
             letterSpacing: 7,
             textAlign: 'center',
@@ -53,14 +51,15 @@ export default function LoginScreen() {
 
       <View style={styles.footerContainer}>
         <TouchableOpacity onPress={() => navigation.navigate('ForgotPassword')}>
-          <Text style={styles.footertext}>forgot password </Text>
+          <Text style={styles.footertext}> forgot password </Text>
         </TouchableOpacity>
         <Text style={styles.footertext}>||</Text>
         <TouchableOpacity>
           <Text
             onPress={() => navigation.navigate('RegisterScreen')}
             style={styles.footertext}>
-            Sign up
+            {' '}
+            Sign up{' '}
           </Text>
         </TouchableOpacity>
       </View>
@@ -70,27 +69,12 @@ export default function LoginScreen() {
 
 const styles = {
   logoContainer: {
-    backgroundColor: '#fff',
+    // backgroundColor: '#fff',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 300,
-    width: 300,
-    paddingBottom: 90,
+    height: 150,
+    width: 150,
     alignSelf: 'center',
-
-    borderRadius: 60,
-    borderBottomColor: '#222222',
-
-    //shadows
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 12,
-    },
-    shadowOpacity: 0.58,
-    shadowRadius: 16.0,
-
-    elevation: 24,
   },
   pageContainer: {
     height: '100%',
@@ -110,36 +94,23 @@ const styles = {
     },
   },
   loginButton: {
-    backgroundColor: '#02C3BD',
-    height: '8%',
-    width: '40%',
-
-    alignItems: 'center',
-    justifyContent: 'space-around',
-
-    borderRadius: 10,
-
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 12,
-    },
-    shadowOpacity: 0.58,
-    shadowRadius: 16.0,
-
-    elevation: 24,
+    marginTop: 40,
+    borderWidth: 1,
+    paddingLeft: 20,
+    paddingRight: 20,
+    paddingBottom: 7,
+    paddingTop: 7,
+    borderColor: '#009F93',
+    borderRadius: 90,
   },
-  headerStyle: {
-    height: 90,
-  },
+
   footerContainer: {
-    width: '100%',
+    width: '60%',
     flexDirection: 'row',
-    justifyContent: 'space-evenly',
+    justifyContent: 'space-around',
   },
   footertext: {
-    fontSize: 20,
+    fontSize: 15,
     color: '#02C3BD',
-    fontWeight: '100',
   },
 };
