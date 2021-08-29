@@ -1216,6 +1216,11 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/viewpager/-/viewpager-2.0.2.tgz#622b190294b1310c4825c98daeaee1c8443f7124"
   integrity sha512-CKVhIZdX/Cmb80muog8sKpi5vM8npwFp4tx4Dj1IvTBidZweuO22+VH2rDOj7E0LzdV9IYRJ4FGBwcPBD2qUrQ==
 
+"@react-native-picker/picker@^1.16.7":
+  version "1.16.7"
+  resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-1.16.7.tgz#2c943572efcd21c218ee03f23ba1475544b24cf1"
+  integrity sha512-/QJxL4JniloFvdPDufQTiMQQbpucCQ0w7wvGhZQt0x3KVxvI1f/vzDO+669r/1yipcFZbSLcYIiQSMSpZtkqiQ==
+
 "@react-native/assets@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@react-native/assets/-/assets-1.0.0.tgz#c6f9bf63d274bafc8e970628de24986b30a55c8e"
@@ -5933,6 +5938,11 @@ react-native-communications@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/react-native-communications/-/react-native-communications-2.2.1.tgz#7883b56b20a002eeb790c113f8616ea8692ca795"
   integrity sha1-eIO1ayCgAu63kMET+GFuqGksp5U=
+
+react-native-date-picker@^3.4.3:
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/react-native-date-picker/-/react-native-date-picker-3.4.3.tgz#42a76092a221f23004ed45b127d09664201db6e8"
+  integrity sha512-YAp/U8KafgXI57ZiqaZlgWMLPcY686PQ2ejo5gTEb1EcnjSKn3Zt8Gg7+oy55cLl98gZzmz+rJlBeVIDlq4n+A==
 
 react-native-elements@^3.4.2:
   version "3.4.2"
