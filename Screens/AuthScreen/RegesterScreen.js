@@ -16,27 +16,19 @@ import {AuthContext} from '../../Context/AuthProvider';
 export default function RegesterScreen() {
   const [state, setState] = useContext(Context);
 
-  const {user , register} = useContext(AuthContext);
+  const {user, register} = useContext(AuthContext);
 
   const [date, setDate] = useState(new Date());
   const [Gender, setGender] = useState();
-  const [newUserForm, setNewUserForm] = useState({
-    firstName: '',
-    lastName: '',
-    userName: '',
-    password: '',
-    confirmPassword: '',
-    phoneNumber: '',
-    birthdate: date,
-    gender: Gender,
-  });
 
-  const [name, setName] = useState('');
+  const [userName, setUserNmae] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   //   const navigation = useNavigation();
-  //   const layout = useWindowDimensions();
-
+  const layout = useWindowDimensions();
+console.log(email , password , confirmPassword)
   function randomUserId(max) {
     return;
   }
@@ -68,23 +60,27 @@ export default function RegesterScreen() {
         <LogoContainer />
       </View>
       <ScrollView>
-        <View style={styles.fontContainer}>
-          <TextInput
-            theme={styles.inputStyle}
-            underlineColor="#009F93"
-            underlineColorAndroid="#009F93"
-            label="first name"
-            onChangeText={firstName => setName(firstName)}
-          />
+        <View
+          style={{
+            width: layout.width - 150,
+          }}>
           {/* <TextInput
             theme={styles.inputStyle}
             underlineColor="#009F93"
             underlineColorAndroid="#009F93"
-            label="last name"
-            onChangeText={lastNmae =>
-              handleNewUserRegestration('lastName', lastNmae)
-            }
+            label="user name"
+            onChangeText={userName => setUserNmae(userName)}
+          /> */}
+
+          <TextInput
+            theme={styles.inputStyle}
+            underlineColor="#009F93"
+            underlineColorAndroid="#009F93"
+            label="email"
+            onChangeText={email => setEmail(email)}
           />
+          {/* 
+         
           <TextInput
             theme={styles.inputStyle}
             underlineColor="#009F93"
@@ -108,9 +104,10 @@ export default function RegesterScreen() {
             underlineColorAndroid="#009F93"
             label="confirm password"
             secureTextEntry={true}
-            onChangeText={confirmPassword =>
-              handleNewUserRegestration('confirm password', confirmPassword)
-            }
+            onChange={confirmPassword => setConfirmPassword(confirmPassword)}
+            // onChangeText={confirmPassword =>
+            //   handleNewUserRegestration('confirm password', confirmPassword)
+            // }
           />
 
           {/* <TextInput
@@ -125,7 +122,7 @@ export default function RegesterScreen() {
             }
           /> */}
 
-          <View>
+          {/* <View>
             <DatePicker
               style={{
                 marginTop: 20,
@@ -149,10 +146,10 @@ export default function RegesterScreen() {
               {' '}
               birthday
             </Text>
-          </View>
+          </View> */}
         </View>
-
-        {/* <View style={styles.fontContainer}>
+        {/* 
+        <View style={styles.fontContainer}>
           <Picker
             style={{
               height: 50,
@@ -173,12 +170,14 @@ export default function RegesterScreen() {
       <TouchableOpacity
         style={styles.loginButton}
         onPress={() =>
-          register(name, password) && console.log('regester clicked ')
+
+register(email, password) && console.log('regester clicked ')
+
         }>
         <Text
           style={{
             color: '#009F93',
-            fontSize: 30,
+            fontSize: 20,
             letterSpacing: 7,
             textAlign: 'center',
           }}>
@@ -204,7 +203,9 @@ const styles = {
     flex: 1,
     alignItems: 'center',
   },
-  fontContainer: {},
+  fontContainer: {
+    // width: layout.width,
+  },
   inputStyle: {
     colors: {
       text: '#009F93',

@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import {View, Text, TouchableOpacity, useWindowDimensions} from 'react-native';
 import LogoContainer from '../../components/LogoContainer';
 import {TextInput} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
+import {AuthContext} from '../../Context/AuthProvider';
 
 export default function LoginScreen() {
+  const {login} = useContext(AuthContext);
   const [text, setText] = React.useState('');
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
   const navigation = useNavigation();
   const layout = useWindowDimensions();
   // console.log(layout);
@@ -20,8 +24,8 @@ export default function LoginScreen() {
           underlineColor="#009F93"
           underlineColorAndroid="#009F93"
           label="Username / Phone Number"
-          value={text}
-          onChangeText={text => setText(text)}
+          value={userName}
+          onChangeText={userName => setUserName(userName)}
         />
 
         <TextInput
@@ -29,23 +33,24 @@ export default function LoginScreen() {
           underlineColor="#009F93"
           underlineColorAndroid="#009F93"
           label="Password"
-          value={text}
-          onChangeText={text => setText(text)}
+          value={password}
+          secureTextEntry={true}
+          onChangeText={password => setPassword(password)}
         />
       </View>
 
       <TouchableOpacity
         style={styles.loginButton}
-        onPress={() => navigation.navigate('Message')}>
+        onPress={() => login(userName,password)}>
         <Text
           style={{
             color: '#009F93',
-            fontSize: 40,
+            fontSize: 20,
             letterSpacing: 7,
             textAlign: 'center',
           }}>
           {' '}
-          Log in{' '}
+          login{' '}
         </Text>
       </TouchableOpacity>
 
