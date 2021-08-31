@@ -15,20 +15,33 @@ import {Context} from '../../Context/Store';
 import {AuthContext} from '../../Context/AuthProvider';
 export default function RegesterScreen() {
   const [state, setState] = useContext(Context);
-  const {register} = useContext(AuthContext);
 
-  //
-  //   const navigation = useNavigation();
-  //   const layout = useWindowDimensions();
+  const {user , register} = useContext(AuthContext);
+
   const [date, setDate] = useState(new Date());
   const [Gender, setGender] = useState();
-  //
-  //
+  const [newUserForm, setNewUserForm] = useState({
+    firstName: '',
+    lastName: '',
+    userName: '',
+    password: '',
+    confirmPassword: '',
+    phoneNumber: '',
+    birthdate: date,
+    gender: Gender,
+  });
+
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+
+  //   const navigation = useNavigation();
+  //   const layout = useWindowDimensions();
 
   function randomUserId(max) {
     return;
   }
 
+  console.log('user', user);
   function handleNewUserRegestration(name, value) {
     setState({
       ...state,
@@ -47,7 +60,7 @@ export default function RegesterScreen() {
       isLoggedIn: true,
     });
   }
-  console.log(' regesterd user ', state.loggedInUser, state.isLoggedIn);
+  // console.log(' regesterd user ', state.loggedInUser, state.isLoggedIn);
 
   return (
     <View style={styles.pageContainer}>
@@ -61,11 +74,9 @@ export default function RegesterScreen() {
             underlineColor="#009F93"
             underlineColorAndroid="#009F93"
             label="first name"
-            onChangeText={firstName =>
-              handleNewUserRegestration('firstName', firstName)
-            }
+            onChangeText={firstName => setName(firstName)}
           />
-          <TextInput
+          {/* <TextInput
             theme={styles.inputStyle}
             underlineColor="#009F93"
             underlineColorAndroid="#009F93"
@@ -82,16 +93,14 @@ export default function RegesterScreen() {
             onChangeText={userName =>
               handleNewUserRegestration('userNmae', userName)
             }
-          />
+          /> */}
           <TextInput
             theme={styles.inputStyle}
             underlineColor="#009F93"
             underlineColorAndroid="#009F93"
             label="Password"
             secureTextEntry={true}
-            onChangeText={password =>
-              handleNewUserRegestration('password', password)
-            }
+            onChangeText={password => setPassword(password)}
           />
           <TextInput
             theme={styles.inputStyle}
@@ -104,7 +113,7 @@ export default function RegesterScreen() {
             }
           />
 
-          <TextInput
+          {/* <TextInput
             theme={styles.inputStyle}
             autoCompleteType="tel"
             keyboardType="numeric"
@@ -114,7 +123,7 @@ export default function RegesterScreen() {
             onChangeText={phoneNumber =>
               handleNewUserRegestration('phoneNumber', phoneNumber)
             }
-          />
+          /> */}
 
           <View>
             <DatePicker
@@ -143,7 +152,7 @@ export default function RegesterScreen() {
           </View>
         </View>
 
-        <View style={styles.fontContainer}>
+        {/* <View style={styles.fontContainer}>
           <Picker
             style={{
               height: 50,
@@ -158,16 +167,18 @@ export default function RegesterScreen() {
             <Picker.Item label="Male" value="Male" />
             <Picker.Item label="Female" value="Female" />
           </Picker>
-        </View>
+        </View> */}
       </ScrollView>
 
       <TouchableOpacity
         style={styles.loginButton}
-        onPress={() => regesterandLogin()}>
+        onPress={() =>
+          register(name, password) && console.log('regester clicked ')
+        }>
         <Text
           style={{
             color: '#009F93',
-            fontSize: 40,
+            fontSize: 30,
             letterSpacing: 7,
             textAlign: 'center',
           }}>
@@ -207,10 +218,10 @@ const styles = {
     marginTop: 40,
     marginBottom: 40,
     borderWidth: 1,
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingBottom: 7,
-    paddingTop: 7,
+    paddingLeft: 3,
+    paddingRight: 3,
+    paddingBottom: 2,
+    paddingTop: 2,
     borderColor: '#009F93',
     borderRadius: 90,
   },

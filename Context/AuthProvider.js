@@ -11,6 +11,15 @@ export const AuthProvider = ({children}) => {
       value={{
         user,
         setUser,
+        // regesterNewUser: async (email, password) => {
+        //     try {
+        //       await auth()
+        //       // setUser(auth().currentUser);
+        //     } catch (error) {
+        //       console.log(error);
+        //     }
+        //   },
+       
         login: async (email, password) => {
           try {
             await auth().signInWithEmailAndPassword(email, password);
