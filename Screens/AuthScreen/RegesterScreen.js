@@ -12,12 +12,11 @@ import LogoContainer from '../../components/LogoContainer';
 import {TextInput} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
 import {Context} from '../../Context/Store';
-
+import {AuthContext} from '../../Context/AuthProvider';
 export default function RegesterScreen() {
   const [state, setState] = useContext(Context);
-  // console.log('global state : ', state.user);
+  const {register} = useContext(AuthContext);
 
-  //
   //
   //   const navigation = useNavigation();
   //   const layout = useWindowDimensions();
@@ -48,7 +47,7 @@ export default function RegesterScreen() {
       isLoggedIn: true,
     });
   }
-  console.log(' regesterd user ', state.loggedInUser , state.isLoggedIn);
+  console.log(' regesterd user ', state.loggedInUser, state.isLoggedIn);
 
   return (
     <View style={styles.pageContainer}>
@@ -84,6 +83,27 @@ export default function RegesterScreen() {
               handleNewUserRegestration('userNmae', userName)
             }
           />
+          <TextInput
+            theme={styles.inputStyle}
+            underlineColor="#009F93"
+            underlineColorAndroid="#009F93"
+            label="Password"
+            secureTextEntry={true}
+            onChangeText={password =>
+              handleNewUserRegestration('password', password)
+            }
+          />
+          <TextInput
+            theme={styles.inputStyle}
+            underlineColor="#009F93"
+            underlineColorAndroid="#009F93"
+            label="confirm password"
+            secureTextEntry={true}
+            onChangeText={confirmPassword =>
+              handleNewUserRegestration('confirm password', confirmPassword)
+            }
+          />
+
           <TextInput
             theme={styles.inputStyle}
             autoCompleteType="tel"
