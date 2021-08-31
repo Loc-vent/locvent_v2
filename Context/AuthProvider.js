@@ -19,6 +19,22 @@ export const AuthProvider = ({children}) => {
             console.log(error);
           }
         },
+        register: async (email, password) => {
+          try {
+            await auth().createUserWithEmailAndPassword(email, password);
+            // setUser(auth().currentUser);
+          } catch (error) {
+            console.log(error);
+          }
+        },
+        logout: async () => {
+          try {
+            await auth().signOut();
+            setUser(null);
+          } catch (error) {
+            console.log(error);
+          }
+        },
       }}>
       {children}
     </AuthContext.Provider>

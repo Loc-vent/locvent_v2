@@ -15,7 +15,7 @@ import {Context} from '../../Context/Store';
 
 export default function RegesterScreen() {
   const [state, setState] = useContext(Context);
-  console.log('global state : ', state.user);
+  // console.log('global state : ', state.user);
 
   //
   //
@@ -33,8 +33,8 @@ export default function RegesterScreen() {
   function handleNewUserRegestration(name, value) {
     setState({
       ...state,
-      user: {
-        ...state.user,
+      user2: {
+        ...state.user2,
         id: Math.floor(Math.random() * 8000),
         [name]: value,
       },
@@ -44,7 +44,7 @@ export default function RegesterScreen() {
   function regesterandLogin() {
     setState({
       ...state,
-      loggedInUser: state.user,
+      loggedInUser: state.user2,
       isLoggedIn: true,
     });
   }
