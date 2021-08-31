@@ -28,7 +28,7 @@ function MiddleChild({navigation}) {
   useEffect((state) => {
     setTimeout(() => {
       setLoggenIn(!isLoggedIn);
-      setUser({});
+      // setUser({});
     }, 1000);
   }, []);
   return (
