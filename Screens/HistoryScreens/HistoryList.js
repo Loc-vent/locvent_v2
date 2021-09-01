@@ -71,8 +71,8 @@ export function HistoryList({navigation}) {
       <FlatList
         keyExtractor={item => item.id}
         key={(item, index) => item.id}
-        // data={HistoryData}
-        data={reportHistory}
+        data={HistoryData}
+        // data={reportHistory}
         renderItem={({item}) => (
           <TouchableOpacity
             onPress={() => {
@@ -82,7 +82,7 @@ export function HistoryList({navigation}) {
             }}>
             <HistoryCard
               navigation={navigation}
-              reporterId={item.ReportLatitude}
+              reporterId={item.reporterId}
               ReportLatitude={item.ReportLatitude}
               ReportLongitude={item.ReportLongitude}
               DetectedLocust={item.DetectedLocust}
@@ -100,19 +100,24 @@ export function HistoryList({navigation}) {
           <View style={styles.modalContainer}>
             <View style={styles.textLineContainer}>
               <Text style={styles.titleHeading}> Report ID : </Text>
-              <Text style={styles.dataText}> {reportHistory.reporterId} </Text>
+              <Text style={styles.dataText}>
+                 {/* {reportHistory.reporterId}  */}
+                 </Text>
             </View>
 
             <View style={styles.textLineContainer}>
               <Text style={styles.titleHeading}> Date : </Text>
-              <Text style={styles.dataText}> {reportHistory.created_on} </Text>
+              <Text style={styles.dataText}> 
+              
+              {/* {reportHistory.created_on} */}
+               </Text>
             </View>
 
             <View style={styles.textLineContainer}>
               <Text style={styles.titleHeading}> Lattitude : </Text>
               <Text style={styles.dataText}>
                 {' '}
-                {reportHistory.ReportLatitude}{' '}
+                {/* {reportHistory.ReportLatitude} */}
               </Text>
             </View>
 
@@ -120,7 +125,7 @@ export function HistoryList({navigation}) {
               <Text style={styles.titleHeading}> Longitude : </Text>
               <Text style={styles.dataText}>
                 {' '}
-                {reportHistory.ReportLongitude}{' '}
+                {/* {reportHistory.ReportLongitude}{' '} */}
               </Text>
             </View>
 
@@ -128,7 +133,7 @@ export function HistoryList({navigation}) {
               <Text style={styles.titleHeading}> locust type : </Text>
               <Text style={styles.dataText}>
                 {' '}
-                {reportHistory.DetectedLocust}{' '}
+                {/* {reportHistory.DetectedLocust}{' '} */}
               </Text>
             </View>
 
