@@ -7,34 +7,32 @@ import Profile from './Profile';
 import {TouchableOpacity, View, Text} from 'react-native';
 import {Button} from 'react-native-paper';
 import {useNavigation} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
 
+import {createStackNavigator} from '@react-navigation/stack';
 import {AnimatedTabBarNavigator} from 'react-native-animated-nav-tab-bar';
-const Tabs = AnimatedTabBarNavigator();
-const Stack = createStackNavigator();
-const Tab = createBottomTabNavigator();
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import Message from '../Screens/MessageScreens/Message';
+
+const Tab = createMaterialBottomTabNavigator();
+
+// const Tabs = AnimatedTabBarNavigator();
+// const Stack = createStackNavigator();
+// const Tab1 = createBottomTabNavigator();
 
 export function BottomTabs() {
   const navigation = useNavigation();
-  const [isLoggedIn, setLoggenIn] = useState(false);
 
   return (
     <Tab.Navigator
       initialRouteName="Home"
+      shifting={true}
+      labeled={true}
+      initialRouteName="Home"
+      activeColor="#009F93"
+      barStyle={{backgroundColor: '#fff' , 
+    }}
+      // headerShown={true}
       screenOptions={{
-        tabBarActiveTintColor: '#009F93',
-        tabBarBackgroundColor: '#fff',
-        tabBarInactiveTintColor: 'silver',
-        tabBarShowLabel: false,
-        tabBarStyle: {
-          backgroundColor: '#fff',
-          height: 70,
-          width: '100%',
-        },
-        headerStyle: {
-          height: 80,
-        },
-
         headerRight: () => (
           <Button
             onPress={() => navigation.navigate('Message')}
@@ -53,13 +51,16 @@ export function BottomTabs() {
       <Tab.Screen
         name="History"
         component={History}
+
         options={{
+          headerShown: true,
+          title: 'history',
           tabBarIcon: ({color, size, focused}) => (
             <MaterialCommunityIcons
               style={focused ? styles.iconFocused : styles.iconNotFocused}
               onPress={() => console.log('history clicked ')}
               name="history"
-              size={focused ? 30 : 20}
+              size={focused ? 25 : 20}
             />
           ),
           tabBarBadge: 3,
@@ -70,7 +71,6 @@ export function BottomTabs() {
             color: '#009F93',
             fontWeight: '200',
           },
-          headerTransparent: true,
         }}
       />
       <Tab.Screen
@@ -78,14 +78,13 @@ export function BottomTabs() {
         component={Home}
         options={{
           onPress: () => console.log('home clicked'),
-          headerShown: false,
           tabBarIcon: ({color, size, focused}) => (
             <View>
               <TouchableOpacity onPress={() => console.log('home bar ')}>
                 <MaterialCommunityIcons
                   style={focused ? styles.iconFocused : styles.iconNotFocused}
                   name="circle-slice-8"
-                  size={focused ? 30 : 25}
+                  size={focused ? 25 : 20}
                 />
               </TouchableOpacity>
             </View>
@@ -96,6 +95,10 @@ export function BottomTabs() {
         name="Profile"
         component={Profile}
         options={{
+
+
+          
+          headerShown: true,
           tabBarIcon: ({color, size, focused}) => (
             <View>
               <TouchableOpacity onPress={() => console.log('profile clicked ')}>
@@ -107,7 +110,7 @@ export function BottomTabs() {
               </TouchableOpacity>
             </View>
           ),
-          headerTransparent: true,
+          // headerTransparent: true,
           headerTitleStyle: {
             fontSize: 30,
             fontFamily: 'Arial',
@@ -117,6 +120,32 @@ export function BottomTabs() {
           },
         }}
       />
+      {/* <Tab.Screen
+        options={{
+          headerShown: true,
+          tabBarIcon: ({color, size, focused}) => (
+            <View>
+              <TouchableOpacity onPress={() => console.log('profile clicked ')}>
+                <MaterialCommunityIcons
+                  name="comment-processing"
+                  style={focused ? styles.iconFocused : styles.iconNotFocused}
+                  size={focused ? 25 : 20}
+                />
+              </TouchableOpacity>
+            </View>
+          ),
+          headerTransparent: false,
+          headerTitleStyle: {
+            fontSize: 30,
+            fontFamily: 'Arial',
+            padding: 20,
+            color: '#009F93',
+            fontWeight: '200',
+          },
+        }}
+        name="Message"
+        component={Message}
+      /> */}
     </Tab.Navigator>
   );
 }
@@ -124,24 +153,24 @@ export function BottomTabs() {
 const styles = {
   iconFocused: {
     color: '#009F93',
-    backgroundColor: '#fff',
-    paddingRight: 40,
-    paddingLeft: 40,
-    paddingBottom: 2,
-    paddingTop: 7,
-    borderRadius: 10,
-    borderColor: '#009F93',
-    borderWidth: 3,
+    // backgroundColor: '#fff',
+    // paddingRight: 40,
+    // paddingLeft: 40,
+    // paddingBottom: 2,
+    // paddingTop: 7,
+    // borderRadius: 10,
+    // borderColor: '#009F93',
+    // borderWidth: 3,
   },
   iconNotFocused: {
     color: 'silver',
-    backgroundColor: '#fff',
-    paddingRight: 25,
-    paddingLeft: 25,
-    paddingBottom: 2,
-    paddingTop: 7,
-    borderRadius: 10,
-    borderColor: 'silver',
-    borderWidth: 3,
+    // backgroundColor: '#fff',
+    // paddingRight: 25,
+    // paddingLeft: 25,
+    // paddingBottom: 2,
+    // paddingTop: 7,
+    // borderRadius: 10,
+    // borderColor: 'silver',
+    // borderWidth: 3,
   },
 };

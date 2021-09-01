@@ -13,7 +13,7 @@ export default function Profile() {
         <View style={styles.topContainer}>
           <View style={styles.userHeader}>
             <TouchableOpacity style={styles.avatar}>
-              <Avatar.Image size={120} source={require('../Assets/guy.jpeg')} />
+              <Avatar.Image size={120} source={user.photoURL} />
             </TouchableOpacity>
 
             <View style={{flexDirection: 'column', margin: 5}}>
@@ -28,7 +28,7 @@ export default function Profile() {
                 }}>
                 <View>
                   <Text style={styles.titleText}>Date joined </Text>
-                  <Text style={styles.normalText}> {userData.dateJoined} </Text>
+                  <Text style={styles.normalText}> {user.creationTime} </Text>
                 </View>
                 <View>
                   <Text style={styles.titleText}>Reports </Text>
@@ -82,8 +82,12 @@ export default function Profile() {
           </View>
 
           <View style={styles.container2}>
+            <Text style={styles.titleText}> Email </Text>
+            <Text style={styles.detailText}> {user.email} </Text>
+          </View>
+          <View style={styles.container2}>
             <Text style={styles.titleText}> Phone Number </Text>
-            <Text style={styles.detailText}> {userData.phoneNumber} </Text>
+            <Text style={styles.detailText}> {user.phoneNumber} </Text>
           </View>
         </View>
         <TouchableOpacity onPress={() => logout()}>
@@ -176,7 +180,7 @@ const styles = {
   },
   detailText: {
     color: '#037171',
-    fontSize: 20,
+    fontSize: 15,
     letterSpacing: 5,
   },
   container2: {

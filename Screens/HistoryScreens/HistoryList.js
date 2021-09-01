@@ -1,8 +1,9 @@
 import React, {useState, useReducer} from 'react';
-import {FlatList, View, Text, TouchableOpacity} from 'react-native';
+import {FlatList, View, Text, TouchableOpacity, Button} from 'react-native';
 import {HistoryData, userData} from '../../Data/Data';
 import HistoryCard from '../../components/HistoryCard';
 import Modal from 'react-native-modal';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const ACTIONS = {
   TOGGLEMODAL: 'TOGGLEMODAL',
@@ -57,6 +58,21 @@ export function HistoryList({navigation}) {
   };
   return (
     <View>
+      <Button
+        style={{
+          backgroundColor: '#009F93',
+        }}
+        onPress={() => navigation.navigate('Message')}
+        title="Go to Messages">
+        <MaterialCommunityIcons
+          style={{
+            marginRight: 30,
+          }}
+          name="comment-processing"
+          color="#009F93"
+          size={40}
+        />
+      </Button>
       <FlatList
         keyExtractor={item => item.id}
         key={(item, index) => item.id}

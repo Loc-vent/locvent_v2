@@ -16,7 +16,7 @@ export default function Home({navigation}) {
       }}>
       <Stack.Screen
         options={{
-          headerShown: false,
+          headerShown: true,
         }}
         name="HomeScreen"
         component={HomeScreen}
@@ -41,22 +41,13 @@ export default function Home({navigation}) {
       />
       <Stack.Screen
         options={{
-
-          headerTransparent: true,
+          // headerTransparent: true,
           headerTitle: 'information board',
           headerTitleStyle: {
             color: '#009F93',
-            fontSize: 30,
-            letterSpacing: 2,
+            fontSize: 17,
+            letterSpacing: 7,
             fontWeight: '100',
-          },
-          headerStyle: {
-            backgroundColor: '#009F93',
-            height: 100,
-          },
-          headerLeftContainerStyle: {
-            color: '#009F93',
-            fontSize: 10,
           },
         }}
         name="Message"
