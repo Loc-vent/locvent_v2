@@ -1,8 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {StyleSheet, Text, StatusBar} from 'react-native';
-
-import {Avatar, Button, Card, Title, Paragraph} from 'react-native-paper';
-
+import {Card, Title, Paragraph} from 'react-native-paper';
 
 const HistoryCard = ({
   id,

@@ -28,7 +28,7 @@ export default function RegesterScreen() {
 
   //   const navigation = useNavigation();
   const layout = useWindowDimensions();
-console.log(email , password , confirmPassword)
+  console.log(email, password, confirmPassword);
   function randomUserId(max) {
     return;
   }
@@ -170,9 +170,7 @@ console.log(email , password , confirmPassword)
       <TouchableOpacity
         style={styles.loginButton}
         onPress={() =>
-
-register(email, password) && console.log('regester clicked ')
-
+          register(email, password) && console.log('regester clicked ')
         }>
         <Text
           style={{
