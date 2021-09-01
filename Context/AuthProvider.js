@@ -8,11 +8,14 @@ const APILINK = 'http://192.168.137.63:5000';
 
 export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
+  const [reportHistory, setReportHistory] = useState(null);
   return (
     <AuthContext.Provider
       value={{
         user,
         setUser,
+        reportHistory,
+        setReportHistory,
         regesterWithOA: async (
           UserName,
           PhoneNumber,
@@ -84,24 +87,16 @@ export const AuthProvider = ({children}) => {
 
         getUserReportHistory: async (userId, page) => {
           try {
-            // const requestOptions2 = {
-            //   method: 'GET',
-            //   headers: {
-            //     Accept: 'application/json',
-            //     'Content-Type': 'application/json',
-            //   },
-            //   body: JSON.stringify({
-            //     username: UserName,
-            //     password: password,
-            //   }),
-            // };
             let urlcath = `${APILINK}/api/report/getAll/1/${user._id}`;
             let response = await fetch(urlcath);
             const json = await response.json();
-            // {
-            //   response.status === 200 ? setUser(json) : null;
-            // }
+
+            {
+              response.status === 200 ? setReportHistory(json) : null;
+            }
+            console.log('history histroy', reportHistory)
             console.log('report history response ', response.status);
+            console.log('report history data ', json);
           } catch (error) {
             console.log('report history :', error);
           }

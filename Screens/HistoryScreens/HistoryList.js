@@ -22,12 +22,10 @@ const active = {
 };
 
 export function HistoryList({navigation}) {
-  const {user, getUserReportHistory} = useContext(AuthContext);
+  const {user, getUserReportHistory, reportHistory} = useContext(AuthContext);
 
   const [isModalVisible, setModalVisible] = useState(false);
   const [activeHistory, setActiveHistory] = useState(active);
-
-  getUserReportHistory(user._id, 9);
 
   function reducer(state, action) {
     switch (action.type) {
@@ -73,20 +71,22 @@ export function HistoryList({navigation}) {
       <FlatList
         keyExtractor={item => item.id}
         key={(item, index) => item.id}
-        data={HistoryData}
+        // data={HistoryData}
+        data={reportHistory}
         renderItem={({item}) => (
           <TouchableOpacity
             onPress={() => {
+              getUserReportHistory(user._id, 9);
               getActiveHistoryData(item);
               dispatch({type: ACTIONS.TOGGLEMODAL, payload: {item}});
             }}>
             <HistoryCard
               navigation={navigation}
-              id={item.id}
-              date={item.date}
-              description={item.description}
-              Latitude={item.location.Latitude}
-              Longitude={item.location.Longitude}
+              reporterId={item.ReportLatitude}
+              ReportLatitude={item.ReportLatitude}
+              ReportLongitude={item.ReportLongitude}
+              DetectedLocust={item.DetectedLocust}
+              created_on={item.created_on}
             />
           </TouchableOpacity>
         )}
@@ -100,27 +100,36 @@ export function HistoryList({navigation}) {
           <View style={styles.modalContainer}>
             <View style={styles.textLineContainer}>
               <Text style={styles.titleHeading}> Report ID : </Text>
-              <Text style={styles.dataText}> {state.id} </Text>
+              <Text style={styles.dataText}> {reportHistory.reporterId} </Text>
             </View>
 
             <View style={styles.textLineContainer}>
               <Text style={styles.titleHeading}> Date : </Text>
-              <Text style={styles.dataText}> {state.date} </Text>
+              <Text style={styles.dataText}> {reportHistory.created_on} </Text>
             </View>
 
             <View style={styles.textLineContainer}>
               <Text style={styles.titleHeading}> Lattitude : </Text>
-              <Text style={styles.dataText}> {state.location.Latitude} </Text>
+              <Text style={styles.dataText}>
+                {' '}
+                {reportHistory.ReportLatitude}{' '}
+              </Text>
             </View>
 
             <View style={styles.textLineContainer}>
               <Text style={styles.titleHeading}> Longitude : </Text>
-              <Text style={styles.dataText}> {state.location.Longitude} </Text>
+              <Text style={styles.dataText}>
+                {' '}
+                {reportHistory.ReportLongitude}{' '}
+              </Text>
             </View>
 
             <View style={styles.textLineContainer}>
-              <Text style={styles.titleHeading}> Description : </Text>
-              <Text style={styles.dataText}> {state.description} </Text>
+              <Text style={styles.titleHeading}> locust type : </Text>
+              <Text style={styles.dataText}>
+                {' '}
+                {reportHistory.DetectedLocust}{' '}
+              </Text>
             </View>
 
             <TouchableOpacity style={styles.closeBtn} onPress={toggleModal}>

@@ -3,28 +3,28 @@ import {StyleSheet, Text, StatusBar} from 'react-native';
 import {Card, Title, Paragraph} from 'react-native-paper';
 
 const HistoryCard = ({
-  id,
-  Latitude,
-  Longitude,
-  date,
-  description,
-  navigation,
+  reporterId,
+  ReportLatitude,
+  ReportLongitude,
+  DetectedLocust,
+  created_on,
 }) => (
   <Card style={styles.container}>
     <Card.Content>
       <Title>
-        <Text style={styles.texts}>id : {id}</Text>
+        <Text style={styles.texts}>id : {reporterId}</Text>
       </Title>
       <Title>
-        <Text style={styles.texts}>date : {date}</Text>
+        <Text style={styles.texts}>date : {created_on}</Text>
       </Title>
       <Title>
         <Text style={styles.texts}>
-          location - lat - {Latitude} , log - {Longitude}
+          location - lat - {ReportLatitude} , log - {ReportLongitude}
         </Text>
       </Title>
+
       <Paragraph>
-        <Text style={styles.texts}>description : {description}</Text>
+        <Text style={styles.texts}>detected locust : {DetectedLocust}</Text>
       </Paragraph>
     </Card.Content>
   </Card>
