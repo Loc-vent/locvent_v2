@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   View,
   Text,
@@ -14,14 +14,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Context} from '../../Context/Store';
 import {AuthContext} from '../../Context/AuthProvider';
 export default function RegesterScreen() {
-  const [state, setState] = useContext(Context);
-
-  const {user, register, regesterWithOA} = useContext(AuthContext);
-
-  const [date, setDate] = useState(new Date());
-  const [Gender, setGender] = useState('');
-  const [isExpert, setIsExpert] = useState();
-
+  const {user, regesterWithOA} = useContext(AuthContext);
   const [formData, setFormData] = useState({
     userName: '',
     password: '',
