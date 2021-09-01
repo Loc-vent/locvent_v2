@@ -6,13 +6,13 @@ import {useNavigation} from '@react-navigation/native';
 import {AuthContext} from '../../Context/AuthProvider';
 
 export default function LoginScreen() {
-  const {login} = useContext(AuthContext);
+  const {logInWithOA} = useContext(AuthContext);
   const [text, setText] = React.useState('');
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
   const layout = useWindowDimensions();
-  // console.log(layout);
+  console.log('userName ', userName, 'pass', password);
   return (
     <View style={styles.pageContainer}>
       <View style={styles.logoContainer}>
@@ -41,7 +41,7 @@ export default function LoginScreen() {
 
       <TouchableOpacity
         style={styles.loginButton}
-        onPress={() => login(userName,password)}>
+        onPress={() => logInWithOA(userName, password)}>
         <Text
           style={{
             color: '#009F93',

@@ -25,11 +25,6 @@ export const AuthProvider = ({children}) => {
           isexpert,
         ) => {
           try {
-            // const requestOptions = {
-            //   method: 'POST',
-            //   headers: {'Content-Type': 'application/json'},
-            //   body: JSON.stringify({username: username, password: password}),
-            // };
             const requestOptions2 = {
               method: 'POST',
               headers: {
@@ -49,41 +44,41 @@ export const AuthProvider = ({children}) => {
               }),
             };
 
-            let urlcath = 'http://192.168.137.63:5000/api/user/registerUser';
+            let urlcath = `${APILINK}/api/user/registerUser`;
             let response = await fetch(urlcath, requestOptions2);
             const json = await response.json();
-            console.log('response form api', json);
-            console.log('status form api', response.status);
+            console.log('register response form api :  ', json);
+            console.log('status code  form api : ', response.status);
             {
               response.status === 200 ? setUser(json) : null;
             }
-            // let catchResponse = fetch(
-            //   'http://192.168.137.63:5000/api/user/registerUser',
-            //   {
-            //     method: 'POST',
-            //     headers: {
-            //       Accept: 'application/json',
-            //       'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify({
-            //       UserName,
-            //       PhoneNumber,
-            //       FirstName,
-            //       password,
-            //       LastName,
-            //       Gender,
-            //       regionName,
-            //       woreda,
-            //       isexpert,
-            //     }),
-            //   },
-            // )
-            //   .then(response => response.json())
-            //   .then(responseJSON => {
-            //     console.log(responseJSON);
-            //   });
           } catch (error) {
             console.log('regester error :', error);
+          }
+        },
+
+        logInWithOA: async (UserName, password) => {
+          try {
+            const requestOptions2 = {
+              method: 'POST',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                username: UserName,
+                password: password,
+              }),
+            };
+            let urlcath = `${APILINK}/api/user/loginUser`;
+            let response = await fetch(urlcath, requestOptions2);
+            const json = await response.json();
+            {
+              response.status === 200 ? setUser(json) : null;
+            }
+            console.log('login response ', response.status);
+          } catch (error) {
+            console.log('login error from api  :', error);
           }
         },
 
@@ -105,8 +100,7 @@ export const AuthProvider = ({children}) => {
         },
         logout: async () => {
           try {
-            await
-            //  auth().signOut();
+            await //  auth().signOut();
             setUser(null);
           } catch (error) {
             console.log(error);
