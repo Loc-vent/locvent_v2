@@ -33,7 +33,7 @@ export default function Message() {
       renderTabBar={renderTabBar}
       activeColor={'green'}
       inactiveColor={'pink'}
-      style={{ backgroundColor: 'white'}}
+      style={{backgroundColor: 'white'}}
       navigationState={{index, routes}}
       renderScene={renderScene}
       onIndexChange={setIndex}

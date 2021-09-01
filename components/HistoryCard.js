@@ -1,16 +1,8 @@
 import React, {useState} from 'react';
-import {
-  SafeAreaView,
-  View,
-  FlatList,
-  StyleSheet,
-  Text,
-  StatusBar,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, StatusBar} from 'react-native';
 
 import {Avatar, Button, Card, Title, Paragraph} from 'react-native-paper';
-import {HistoryData, userData} from '../Data/Data';
+
 
 const HistoryCard = ({
   id,
@@ -23,24 +15,20 @@ const HistoryCard = ({
   <Card style={styles.container}>
     <Card.Content>
       <Title>
-        {' '}
-        <Text style={styles.texts}> ID : {id} </Text>
+        <Text style={styles.texts}>id : {id}</Text>
       </Title>
       <Title>
-        {' '}
-        <Text style={styles.texts}> Date : {date} </Text>
+        <Text style={styles.texts}>date : {date}</Text>
       </Title>
       <Title>
-        {' '}
         <Text style={styles.texts}>
-          location - Lat - {Latitude} , Log - {Longitude}
+          location - lat - {Latitude} , log - {Longitude}
         </Text>
       </Title>
       <Paragraph>
-        <Text style={styles.texts}>Description : {description}</Text>
+        <Text style={styles.texts}>description : {description}</Text>
       </Paragraph>
     </Card.Content>
-    {/* <Card.Cover source={{uri: 'https://picsum.photos/700'}} /> */}
   </Card>
 );
 
@@ -49,16 +37,13 @@ export default HistoryCard;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: StatusBar.currentHeight  - 10|| 0,
-    borderRadius: 13,
+    margin: StatusBar.currentHeight - 10 || 0,
+    borderRadius: 10,
     backgroundColor: '#fff',
     borderRightWidth: 10,
     borderLeftWidth: 10,
-    borderLeftColor: "#009F93",
-    borderColor:"#009F93",
-    color: '#009F93',
-    textDecorationColor: '#009F93',
-    textShadowColor: '#009F93',
+    borderLeftColor: '#009F93',
+    borderColor: '#009F93',
     // shadow
     shadowColor: '#000',
     shadowOffset: {
@@ -71,11 +56,11 @@ const styles = StyleSheet.create({
   },
   texts: {
     color: '#009F93',
-    fontSize: 19,
+    fontSize: 16,
     fontFamily: 'Comfortaa',
     letterSpacing: 0.5,
     textShadowColor: '#fff',
-    lineHeight: 40,
+    lineHeight: 30,
   },
   title: {
     fontSize: 32,

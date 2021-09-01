@@ -90,7 +90,6 @@ export function HistoryList({navigation}) {
         <Modal
           isVisible={isModalVisible}
           animationIn={'bounceInUp'}
-          // transparent={true}
           animationType="slide">
           <View style={styles.modalContainer}>
             <View style={styles.textLineContainer}>

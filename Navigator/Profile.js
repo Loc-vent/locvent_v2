@@ -13,12 +13,12 @@ export default function Profile() {
         <View style={styles.topContainer}>
           <View style={styles.userHeader}>
             <TouchableOpacity style={styles.avatar}>
-              <Avatar.Image size={120} source={user.photoURL} />
+              <Avatar.Image size={140} source={user.photoURL} />
             </TouchableOpacity>
 
             <View style={{flexDirection: 'column', margin: 5}}>
               <View style={styles.nameContainer}>
-                <Text style={styles.nameText}>{user.uid} </Text>
+                <Text style={styles.nameText}>{userData.firstName} </Text>
                 <Text style={styles.nameText}>{userData.lastName} </Text>
               </View>
 
@@ -28,7 +28,7 @@ export default function Profile() {
                 }}>
                 <View>
                   <Text style={styles.titleText}>Date joined </Text>
-                  <Text style={styles.normalText}> {user.creationTime} </Text>
+                  <Text style={styles.normalText}> {userData.dateJoined} </Text>
                 </View>
                 <View>
                   <Text style={styles.titleText}>Reports </Text>
@@ -94,10 +94,11 @@ export default function Profile() {
           <View
             style={{
               // marginTop: 20,
-              margin: 20,
-              padding: 20,
+              margin: 30,
+              padding: 10,
               borderColor: '#009F93',
-              borderWidth: 2,
+              borderWidth: 1,
+              height: 50,
               borderRadius: 10,
               justifyContent: 'center',
               alignItems: 'center',
@@ -105,7 +106,7 @@ export default function Profile() {
             <Text
               style={{
                 color: '#009F93',
-                fontSize: 20,
+                fontSize: 15,
               }}>
               logout
             </Text>
