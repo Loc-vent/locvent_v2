@@ -6,6 +6,7 @@ import {
   useWindowDimensions,
   ScrollView,
 } from 'react-native';
+// 02022424
 import {Picker} from '@react-native-picker/picker';
 import DatePicker from 'react-native-date-picker';
 import LogoContainer from '../../components/LogoContainer';
@@ -85,7 +86,7 @@ export default function RegesterScreen() {
           <TextInput
             theme={styles.inputStyle}
             autoCompleteType="tel"
-            keyboardType="text"
+            // keyboardType="text"
             underlineColor="#009F93"
             underlineColorAndroid="#009F93"
             label="first name "
@@ -96,7 +97,7 @@ export default function RegesterScreen() {
           <TextInput
             theme={styles.inputStyle}
             autoCompleteType="tel"
-            keyboardType="text"
+            // keyboardType="text"
             underlineColor="#009F93"
             underlineColorAndroid="#009F93"
             label="last name "
@@ -161,10 +162,10 @@ export default function RegesterScreen() {
         onPress={() =>
           regesterWithOA(
             formData.userName,
-            formData.password,
-            // formData.reenterPass,
             formData.phoneNumber,
+            // formData.reenterPass,
             formData.firstName,
+            formData.password,
             formData.lastName,
             formData.gender,
             formData.regionName,

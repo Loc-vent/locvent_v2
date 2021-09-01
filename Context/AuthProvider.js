@@ -4,6 +4,8 @@ import auth from '@react-native-firebase/auth';
 
 export const AuthContext = createContext();
 
+const APILINK = 'http://192.168.137.63:5000';
+
 export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
   return (
@@ -23,26 +25,65 @@ export const AuthProvider = ({children}) => {
           isexpert,
         ) => {
           try {
-            await fetch('http://192.168.25.169:5000/api/user/registerUser', {
+            // const requestOptions = {
+            //   method: 'POST',
+            //   headers: {'Content-Type': 'application/json'},
+            //   body: JSON.stringify({username: username, password: password}),
+            // };
+            const requestOptions2 = {
               method: 'POST',
               headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
               },
               body: JSON.stringify({
-                UserName: {UserName},
-                password: {password},
-                PhoneNumber: {PhoneNumber},
-                FirstName: {FirstName},
-                LastName: {LastName},
-                Gender: {Gender},
-                regionName: {regionName},
-                woreda: {woreda},
-                isexpert: {isexpert},
+                UserName,
+                PhoneNumber,
+                FirstName,
+                password,
+                LastName,
+                Gender,
+                regionName,
+                woreda,
+                isexpert,
               }),
-            });
+            };
+
+            let urlcath = 'http://192.168.137.63:5000/api/user/registerUser';
+            let response = await fetch(urlcath, requestOptions2);
+            const json = await response.json();
+            console.log('response form api', json);
+            console.log('status form api', response.status);
+            {
+              response.status === 200 ? setUser(json) : null;
+            }
+            // let catchResponse = fetch(
+            //   'http://192.168.137.63:5000/api/user/registerUser',
+            //   {
+            //     method: 'POST',
+            //     headers: {
+            //       Accept: 'application/json',
+            //       'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({
+            //       UserName,
+            //       PhoneNumber,
+            //       FirstName,
+            //       password,
+            //       LastName,
+            //       Gender,
+            //       regionName,
+            //       woreda,
+            //       isexpert,
+            //     }),
+            //   },
+            // )
+            //   .then(response => response.json())
+            //   .then(responseJSON => {
+            //     console.log(responseJSON);
+            //   });
           } catch (error) {
-            console.log('regesterrr', error);
+            console.log('regester error :', error);
           }
         },
 
@@ -64,7 +105,8 @@ export const AuthProvider = ({children}) => {
         },
         logout: async () => {
           try {
-            await auth().signOut();
+            await
+            //  auth().signOut();
             setUser(null);
           } catch (error) {
             console.log(error);
