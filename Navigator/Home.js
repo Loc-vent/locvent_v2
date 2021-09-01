@@ -17,6 +17,14 @@ export default function Home({navigation}) {
       <Stack.Screen
         options={{
           headerShown: true,
+          headerTitle: 'capture',
+          headerTitleStyle: {
+            color: '#009F93',
+            alignSelf: 'center',
+            fontSize: 17,
+            letterSpacing: 7,
+            fontWeight: '100',
+          },
         }}
         name="HomeScreen"
         component={HomeScreen}
@@ -31,11 +39,7 @@ export default function Home({navigation}) {
         component={ReportForm}
       />
       <Stack.Screen
-        options={
-          {
-            // headerShown: false,
-          }
-        }
+        options={{headerShown: false}}
         name="ReportSucceess"
         component={ReportSuccess}
       />

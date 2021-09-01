@@ -58,21 +58,12 @@ export function HistoryList({navigation}) {
   };
   return (
     <View>
-      <Button
-        style={{
-          backgroundColor: '#009F93',
-        }}
-        onPress={() => navigation.navigate('Message')}
-        title="Go to Messages">
-        <MaterialCommunityIcons
-          style={{
-            marginRight: 30,
-          }}
-          name="comment-processing"
-          color="#009F93"
-          size={40}
-        />
-      </Button>
+      <View>
+        <Button
+          color={'#009F93'}
+          onPress={() => navigation.navigate('Message')}
+          title="Go to informatin board"></Button>
+      </View>
       <FlatList
         keyExtractor={item => item.id}
         key={(item, index) => item.id}
@@ -98,7 +89,8 @@ export function HistoryList({navigation}) {
       <View style={{flex: 1}}>
         <Modal
           isVisible={isModalVisible}
-          transparent={true}
+          animationIn={'bounceInUp'}
+          // transparent={true}
           animationType="slide">
           <View style={styles.modalContainer}>
             <View style={styles.textLineContainer}>
@@ -128,7 +120,7 @@ export function HistoryList({navigation}) {
 
             <TouchableOpacity style={styles.closeBtn} onPress={toggleModal}>
               <View>
-                <Text style={styles.closeText}>Close </Text>
+                <Text style={styles.closeText}>close </Text>
               </View>
             </TouchableOpacity>
           </View>
@@ -143,27 +135,24 @@ const styles = {
     flex: 1,
     backgroundColor: '#ffffff',
     justifyContent: 'flex-end',
-    alignItems: 'flex-start',
     padding: 25,
-    alignContent: 'center',
-    opacity: 0.8,
   },
   textLineContainer: {
     flexDirection: 'row',
-    marginTop: 20,
-    marginBottom: 14,
+    marginTop: 2,
+    marginBottom: 8,
   },
   titleHeading: {
-    fontSize: 30,
+    fontSize: 25,
     color: '#009F93',
-    fontWeight: 'bold',
     fontFamily: 'Comfortaa',
-    letterSpacing: 0.5,
+    letterSpacing: 2,
   },
   dataText: {
     flex: 1,
+    letterSpacing: 2,
     fontSize: 20,
-    color: 'grey',
+    color: 'silver',
     fontWeight: '100',
     fontFamily: 'Comfortaa',
   },
@@ -171,20 +160,20 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-
-    height: 70,
-    width: '100%',
+    height: 50,
+    width: '70%',
     borderRadius: 15,
-    backgroundColor: '#009F93',
-    padding: 10,
+    backgroundColor: '#fff',
+    borderColor:'#009F93',
+    borderWidth:2,
     marginBottom: 10,
     marginTop: 15,
   },
   closeText: {
-    color: 'white',
+    color: '#009F93',
     fontFamily: 'Comfortaa',
     fontWeight: '100',
-    fontSize: 30,
-    letterSpacing: 1.9,
+    fontSize: 20,
+    letterSpacing: 4,
   },
 };
