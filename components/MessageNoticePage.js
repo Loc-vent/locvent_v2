@@ -5,8 +5,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import {AuthContext} from '../Context/AuthProvider';
 
 export default function MessageNoticePage() {
-  // getuserNotifications(user._id);
-
   return (
     <View style={styles.container}>
       <ScrollView>
