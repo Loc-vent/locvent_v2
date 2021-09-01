@@ -21,10 +21,10 @@ export default function Message() {
   const renderTabBar = props => (
     <TabBar
       {...props}
-      indicatorStyle={{backgroundColor: 'white', height: 4}}
+      indicatorStyle={{backgroundColor: 'white', height: 5}}
       style={{
         backgroundColor: '#009F93',
-        height: 50,
+        height: 55,
       }}
     />
   );

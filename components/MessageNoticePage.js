@@ -28,8 +28,8 @@ function MessageNoticeCard() {
       <View style={styles.noticeCard}>
         <Text
           style={{
-            color: '#fff',
-            fontSize: 22,
+            color: '#009F93',
+            fontSize: 15,
             marginTop: 5,
           }}>
           this is notice card
@@ -39,7 +39,7 @@ function MessageNoticeCard() {
           onPress={() => {
             console.log('notice clear button');
           }}>
-          <MaterialCommunityIcons name="close" color="#532" size={20} />
+          <MaterialCommunityIcons name="close" color="red" size={15} />
         </TouchableOpacity>
       </View>
     </View>
@@ -48,20 +48,17 @@ function MessageNoticeCard() {
 
 const styles = {
   container: {
-    flexDirection: 'column',
     marginTop: 10,
     justifyContent: 'center',
     alignContent: 'center',
-    alignItems: 'center',
   },
   noticeCard: {
-    width: 450,
+    margin: 10,
     padding: 20,
-
-    backgroundColor: 'silver',
+    backgroundColor: '#fff',
     borderRadius: 10,
-    marginBottom: 5,
-    marginTop: 10,
+    borderColor: 'silver',
+    borderWidth: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },

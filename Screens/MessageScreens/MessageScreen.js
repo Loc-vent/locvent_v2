@@ -30,7 +30,7 @@ export default function MessageScreen() {
     return (
       <Send {...props}>
         <View style={styles.sendingContainer}>
-          <IconButton icon="send-circle" size={52} color="#009F93" />
+          <IconButton icon="send" size={22} color="#009F93" />
         </View>
       </Send>
     );
