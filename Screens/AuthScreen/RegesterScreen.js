@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {
   View,
   Text,
@@ -16,43 +16,28 @@ import {AuthContext} from '../../Context/AuthProvider';
 export default function RegesterScreen() {
   const [state, setState] = useContext(Context);
 
-  const {user, register} = useContext(AuthContext);
+  const {user, register, regesterWithOA} = useContext(AuthContext);
 
   const [date, setDate] = useState(new Date());
-  const [Gender, setGender] = useState();
+  const [Gender, setGender] = useState('');
+  const [isExpert, setIsExpert] = useState();
 
-  const [userName, setUserNmae] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [formData, setFormData] = useState({
+    userName: '',
+    password: '',
+    reenterPass: '',
+    phoneNumber: '',
+    firstName: '',
+    lastName: '',
+    gender: 'Male',
+    regionName: '',
+    woreda: '',
+    isexpert: false,
+  });
 
-  //   const navigation = useNavigation();
+  console.log('from form data', formData);
   const layout = useWindowDimensions();
-  console.log(email, password, confirmPassword);
-  function randomUserId(max) {
-    return;
-  }
-
   console.log('user', user);
-  function handleNewUserRegestration(name, value) {
-    setState({
-      ...state,
-      user2: {
-        ...state.user2,
-        id: Math.floor(Math.random() * 8000),
-        [name]: value,
-      },
-    });
-  }
-
-  function regesterandLogin() {
-    setState({
-      ...state,
-      loggedInUser: state.user2,
-      isLoggedIn: true,
-    });
-  }
-  // console.log(' regesterd user ', state.loggedInUser, state.isLoggedIn);
 
   return (
     <View style={styles.pageContainer}>
@@ -64,53 +49,36 @@ export default function RegesterScreen() {
           style={{
             width: layout.width - 150,
           }}>
-          {/* <TextInput
-            theme={styles.inputStyle}
-            underlineColor="#009F93"
-            underlineColorAndroid="#009F93"
-            label="user name"
-            onChangeText={userName => setUserNmae(userName)}
-          /> */}
-
-          <TextInput
-            theme={styles.inputStyle}
-            underlineColor="#009F93"
-            underlineColorAndroid="#009F93"
-            label="email"
-            onChangeText={email => setEmail(email)}
-          />
-          {/* 
-         
           <TextInput
             theme={styles.inputStyle}
             underlineColor="#009F93"
             underlineColorAndroid="#009F93"
             label="user name"
             onChangeText={userName =>
-              handleNewUserRegestration('userNmae', userName)
+              setFormData({...formData, userName: userName})
             }
-          /> */}
+          />
           <TextInput
             theme={styles.inputStyle}
             underlineColor="#009F93"
             underlineColorAndroid="#009F93"
             label="Password"
             secureTextEntry={true}
-            onChangeText={password => setPassword(password)}
+            onChangeText={password =>
+              setFormData({...formData, password: password})
+            }
           />
           <TextInput
             theme={styles.inputStyle}
             underlineColor="#009F93"
             underlineColorAndroid="#009F93"
-            label="confirm password"
+            label="re-enter password"
             secureTextEntry={true}
-            onChange={confirmPassword => setConfirmPassword(confirmPassword)}
-            // onChangeText={confirmPassword =>
-            //   handleNewUserRegestration('confirm password', confirmPassword)
-            // }
+            onChange={reenterPass =>
+              setFormData({...formData, reenterPass: reenterPass})
+            }
           />
-
-          {/* <TextInput
+          <TextInput
             theme={styles.inputStyle}
             autoCompleteType="tel"
             keyboardType="numeric"
@@ -118,59 +86,98 @@ export default function RegesterScreen() {
             underlineColorAndroid="#009F93"
             label="Phone Number"
             onChangeText={phoneNumber =>
-              handleNewUserRegestration('phoneNumber', phoneNumber)
+              setFormData({...formData, phoneNumber: phoneNumber})
             }
-          /> */}
-
-          {/* <View>
-            <DatePicker
+          />
+          <TextInput
+            theme={styles.inputStyle}
+            autoCompleteType="tel"
+            keyboardType="text"
+            underlineColor="#009F93"
+            underlineColorAndroid="#009F93"
+            label="first name "
+            onChangeText={firstName =>
+              setFormData({...formData, firstName: firstName})
+            }
+          />
+          <TextInput
+            theme={styles.inputStyle}
+            autoCompleteType="tel"
+            keyboardType="text"
+            underlineColor="#009F93"
+            underlineColorAndroid="#009F93"
+            label="last name "
+            onChangeText={lastName =>
+              setFormData({...formData, lastName: lastName})
+            }
+          />
+          <TextInput
+            theme={styles.inputStyle}
+            autoCompleteType="tel"
+            underlineColor="#009F93"
+            underlineColorAndroid="#009F93"
+            label="region"
+            onChangeText={regionName =>
+              setFormData({...formData, regionName: regionName})
+            }
+          />
+          <TextInput
+            theme={styles.inputStyle}
+            autoCompleteType="tel"
+            underlineColor="#009F93"
+            underlineColorAndroid="#009F93"
+            label="woreda"
+            onChangeText={woreda => setFormData({...formData, woreda: woreda})}
+          />
+          <View style={styles.fontContainer}>
+            <Picker
               style={{
-                marginTop: 20,
-                marginBottom: 10,
-              }}
-              mode="date"
-              collapsable={true}
-              textColor="#009F93"
-              date={date}
-              onDateChange={setDate =>
-                handleNewUserRegestration('birthDate', setDate)
-              }
-            />
-            <Text
-              style={{
-                fontSize: 20,
+                height: 50,
                 color: '#009F93',
                 marginTop: 10,
-                marginBottom: 10,
-              }}>
-              {' '}
-              birthday
-            </Text>
-          </View> */}
+              }}
+              selectedValue={formData.gender}
+              onValueChange={(itemValue, itemIndex) =>
+                setFormData({...formData, gender: itemValue})
+              }>
+              <Picker.Item label="Male" value="Male" />
+              <Picker.Item label="Female" value="Female" />
+            </Picker>
+          </View>
+
+          <View style={styles.fontContainer}>
+            <Picker
+              style={{
+                height: 50,
+                color: '#009F93',
+                marginTop: 10,
+              }}
+              selectedValue={formData.isexpert}
+              onValueChange={(isExpert, itemIndex) =>
+                setFormData({...formData, isexpert: isExpert})
+              }>
+              <Picker.Item label="expert" value={true} />
+              <Picker.Item label="notexpert" value={false} />
+            </Picker>
+          </View>
         </View>
-        {/* 
-        <View style={styles.fontContainer}>
-          <Picker
-            style={{
-              height: 50,
-              color: '#009F93',
-              marginTop: 10,
-            }}
-            selectedValue={Gender}
-            onValueChange={(itemValue, itemIndex) =>
-              setGender(itemValue) &&
-              handleNewUserRegestration('gender', itemValue)
-            }>
-            <Picker.Item label="Male" value="Male" />
-            <Picker.Item label="Female" value="Female" />
-          </Picker>
-        </View> */}
       </ScrollView>
 
       <TouchableOpacity
         style={styles.loginButton}
         onPress={() =>
-          register(email, password) && console.log('regester clicked ')
+          regesterWithOA(
+            formData.userName,
+            formData.password,
+            // formData.reenterPass,
+            formData.phoneNumber,
+            formData.firstName,
+            formData.lastName,
+            formData.gender,
+            formData.regionName,
+            formData.woreda,
+            formData.isexpert,
+          )
         }>
         <Text
           style={{
@@ -179,8 +186,7 @@ export default function RegesterScreen() {
             letterSpacing: 7,
             textAlign: 'center',
           }}>
-          {' '}
-          Regester{' '}
+          register
         </Text>
       </TouchableOpacity>
     </View>

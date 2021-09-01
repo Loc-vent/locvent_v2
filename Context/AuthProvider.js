@@ -11,14 +11,40 @@ export const AuthProvider = ({children}) => {
       value={{
         user,
         setUser,
-        // regesterNewUser: async (email, password , birthDay ) => {
-        //     try {
-        //         await auth().crea
-        //       // setUser(auth().currentUser);
-        //     } catch (error) {
-        //       console.log(error);
-        //     }
-        //   },
+        regesterWithOA: async (
+          UserName,
+          PhoneNumber,
+          FirstName,
+          password,
+          LastName,
+          Gender,
+          regionName,
+          woreda,
+          isexpert,
+        ) => {
+          try {
+            await fetch('http://192.168.25.169:5000/api/user/registerUser', {
+              method: 'POST',
+              headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                UserName: {UserName},
+                password: {password},
+                PhoneNumber: {PhoneNumber},
+                FirstName: {FirstName},
+                LastName: {LastName},
+                Gender: {Gender},
+                regionName: {regionName},
+                woreda: {woreda},
+                isexpert: {isexpert},
+              }),
+            });
+          } catch (error) {
+            console.log('regesterrr', error);
+          }
+        },
 
         login: async (email, password) => {
           try {

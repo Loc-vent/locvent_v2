@@ -64,7 +64,7 @@ export default function LoginScreen() {
             onPress={() => navigation.navigate('RegisterScreen')}
             style={styles.footertext}>
             {' '}
-            Sign up{' '}
+            signup{' '}
           </Text>
         </TouchableOpacity>
       </View>
