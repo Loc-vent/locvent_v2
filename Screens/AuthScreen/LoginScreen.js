@@ -7,11 +7,11 @@ import {AuthContext} from '../../Context/AuthProvider';
 
 export default function LoginScreen() {
   const {logInWithOA} = useContext(AuthContext);
-  const [text, setText] = React.useState('');
+
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const navigation = useNavigation();
-  const layout = useWindowDimensions();
+
   console.log('userName ', userName, 'pass', password);
   return (
     <View style={styles.pageContainer}>

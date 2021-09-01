@@ -18,27 +18,30 @@ export default function Profile() {
 
             <View style={{flexDirection: 'column', margin: 5}}>
               <View style={styles.nameContainer}>
-                <Text style={styles.nameText}>{userData.firstName} </Text>
-                <Text style={styles.nameText}>{userData.lastName} </Text>
+                <Text style={styles.nameText}>{user.FirstName} </Text>
+                <Text style={styles.nameText}>{user.LastName} </Text>
               </View>
 
               <View
                 style={{
+                  marginTop: 20,
                   flexDirection: 'row',
                 }}>
                 <View>
-                  <Text style={styles.titleText}>Date joined </Text>
-                  <Text style={styles.normalText}> {userData.dateJoined} </Text>
+                  <Text style={styles.titleText}>Gender </Text>
+                  <Text style={styles.normalText}> {user.gender} </Text>
                 </View>
                 <View>
-                  <Text style={styles.titleText}>Reports </Text>
-                  <Text style={styles.normalText}>{userData.totalReports}</Text>
+                  <Text style={styles.titleText}>expert </Text>
+                  <Text style={styles.normalText}>
+                    {user.isExpert ? ' yes' : 'no'}
+                  </Text>
                 </View>
               </View>
             </View>
           </View>
         </View>
-
+        {/* 
         <View
           style={{
             // marginTop: 20,
@@ -60,7 +63,7 @@ export default function Profile() {
             </Text>
             <Text style={styles.detailText}>{userData.about}</Text>
           </View>
-        </View>
+        </View> */}
 
         <View
           style={{
@@ -72,22 +75,22 @@ export default function Profile() {
             borderRadius: 10,
           }}>
           <View style={styles.container2}>
-            <Text style={styles.titleText}> Location : </Text>
-            <Text style={styles.detailText}> {userData.location} </Text>
+            <Text style={styles.titleText}> phone number : </Text>
+            <Text style={styles.detailText}> {user.PhoneNumber} </Text>
           </View>
 
           <View style={styles.container2}>
-            <Text style={styles.titleText}> Date of Birth </Text>
-            <Text style={styles.detailText}> {userData.dateOfBirth} </Text>
+            <Text style={styles.titleText}> user name </Text>
+            <Text style={styles.detailText}> {user.UserName} </Text>
           </View>
 
           <View style={styles.container2}>
-            <Text style={styles.titleText}> Email </Text>
-            <Text style={styles.detailText}> {user.email} </Text>
+            <Text style={styles.titleText}> region </Text>
+            <Text style={styles.detailText}> {user.regionName} </Text>
           </View>
           <View style={styles.container2}>
-            <Text style={styles.titleText}> Phone Number </Text>
-            <Text style={styles.detailText}> {user.phoneNumber} </Text>
+            <Text style={styles.titleText}> woreda </Text>
+            <Text style={styles.detailText}> {user.woreda} </Text>
           </View>
         </View>
         <TouchableOpacity onPress={() => logout()}>
@@ -151,14 +154,14 @@ const styles = {
     // flexWrap: 'wrap',
   },
   normalText: {
-    fontSize: 35,
+    fontSize: 20,
     color: '#009F93',
     flexWrap: 'wrap',
     fontWeight: '100',
     fontFamily: 'Comfortaa',
   },
   titleText: {
-    fontSize: 15,
+    fontSize: 20,
     color: '#009F93',
     letterSpacing: 5,
 

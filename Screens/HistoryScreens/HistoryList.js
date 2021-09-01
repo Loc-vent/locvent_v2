@@ -1,9 +1,11 @@
-import React, {useState, useReducer} from 'react';
+import React, {useState, useReducer, useContext} from 'react';
 import {FlatList, View, Text, TouchableOpacity, Button} from 'react-native';
 import {HistoryData, userData} from '../../Data/Data';
 import HistoryCard from '../../components/HistoryCard';
 import Modal from 'react-native-modal';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
+import {AuthContext} from '../../Context/AuthProvider';
 
 const ACTIONS = {
   TOGGLEMODAL: 'TOGGLEMODAL',
@@ -20,8 +22,12 @@ const active = {
 };
 
 export function HistoryList({navigation}) {
+  const {user, getUserReportHistory} = useContext(AuthContext);
+
   const [isModalVisible, setModalVisible] = useState(false);
   const [activeHistory, setActiveHistory] = useState(active);
+
+  getUserReportHistory(user._id, 9);
 
   function reducer(state, action) {
     switch (action.type) {
@@ -163,8 +169,8 @@ const styles = {
     width: '70%',
     borderRadius: 15,
     backgroundColor: '#fff',
-    borderColor:'#009F93',
-    borderWidth:2,
+    borderColor: '#009F93',
+    borderWidth: 2,
     marginBottom: 10,
     marginTop: 15,
   },

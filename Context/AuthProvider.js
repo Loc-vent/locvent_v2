@@ -82,6 +82,31 @@ export const AuthProvider = ({children}) => {
           }
         },
 
+        getUserReportHistory: async (userId, page) => {
+          try {
+            // const requestOptions2 = {
+            //   method: 'GET',
+            //   headers: {
+            //     Accept: 'application/json',
+            //     'Content-Type': 'application/json',
+            //   },
+            //   body: JSON.stringify({
+            //     username: UserName,
+            //     password: password,
+            //   }),
+            // };
+            let urlcath = `${APILINK}/api/report/getAll/1/${user._id}`;
+            let response = await fetch(urlcath);
+            const json = await response.json();
+            // {
+            //   response.status === 200 ? setUser(json) : null;
+            // }
+            console.log('report history response ', response.status);
+          } catch (error) {
+            console.log('report history :', error);
+          }
+        },
+
         login: async (email, password) => {
           try {
             await auth().signInWithEmailAndPassword(email, password);

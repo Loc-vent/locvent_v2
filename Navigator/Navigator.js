@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from './Home';
@@ -13,6 +13,8 @@ import {AnimatedTabBarNavigator} from 'react-native-animated-nav-tab-bar';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import Message from '../Screens/MessageScreens/Message';
 
+import {AuthContext} from '../Context/AuthProvider';
+
 const Tab = createMaterialBottomTabNavigator();
 
 // const Tabs = AnimatedTabBarNavigator();
@@ -20,6 +22,8 @@ const Tab = createMaterialBottomTabNavigator();
 // const Tab1 = createBottomTabNavigator();
 
 export function BottomTabs() {
+  const {user, getUserReportHistory} = useContext(AuthContext);
+
   const navigation = useNavigation();
 
   return (
@@ -29,8 +33,7 @@ export function BottomTabs() {
       labeled={true}
       initialRouteName="Home"
       activeColor="#009F93"
-      barStyle={{backgroundColor: '#fff' , 
-    }}
+      barStyle={{backgroundColor: '#fff'}}
       // headerShown={true}
       screenOptions={{
         headerRight: () => (
@@ -51,14 +54,13 @@ export function BottomTabs() {
       <Tab.Screen
         name="History"
         component={History}
-
         options={{
           headerShown: true,
           title: 'history',
           tabBarIcon: ({color, size, focused}) => (
             <MaterialCommunityIcons
               style={focused ? styles.iconFocused : styles.iconNotFocused}
-              onPress={() => console.log('history clicked ')}
+              onPress={() => getUserReportHistory(user._id, 9)}
               name="history"
               size={focused ? 25 : 20}
             />
@@ -95,9 +97,6 @@ export function BottomTabs() {
         name="Profile"
         component={Profile}
         options={{
-
-
-          
           headerShown: true,
           tabBarIcon: ({color, size, focused}) => (
             <View>
