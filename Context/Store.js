@@ -1,7 +1,7 @@
 import React, {useState, createContext} from 'react';
 
 const initState = {
-  user2: {
+  user1: {
     id: '',
     firstName: '',
     lastName: '',

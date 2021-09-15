@@ -4,12 +4,14 @@ import auth from '@react-native-firebase/auth';
 
 export const AuthContext = createContext();
 
-const APILINK = 'http://192.168.137.72:5000';
+const APILINK = 'http://192.168.48.169:5000';
 
 export const AuthProvider = ({children}) => {
   const [user, setUser] = useState(null);
   const [reportHistory, setReportHistory] = useState(null);
-  const [notifications, setNotificatins] = useState(null);
+  const [notifications, setNotificatins] = useState({});
+  const [myMessage , setMymessage] = useState({})
+  const [otherMessages , setOtherMessages] = useState({})
   return (
     <AuthContext.Provider
       value={{
@@ -19,6 +21,10 @@ export const AuthProvider = ({children}) => {
         setReportHistory,
         notifications,
         setNotificatins,
+        myMessage,
+        setMymessage,
+        otherMessages,
+        setOtherMessages,
         regesterWithOA: async (
           UserName,
           PhoneNumber,
@@ -105,7 +111,7 @@ export const AuthProvider = ({children}) => {
           }
         },
 
-        getuserNotifications: async userId => {
+        getuserNotifications: async (userId) => {
           try {
             let urlcath = `${APILINK}/api/broadCast/getBroadCast/${user._id}`;
             let response = await fetch(urlcath);
@@ -121,6 +127,27 @@ export const AuthProvider = ({children}) => {
             console.log('report history :', error);
           }
         },
+
+
+        getMessages: async (userId) => {
+
+          try {
+            let urlcath = `${APILINK}/api/message/getAll/1/${user._id}`;
+            let response = await fetch(urlcath);
+            const json = await response.json();
+
+            {
+              response.status === 200 ? setOtherMessages(json) : null;
+            }
+
+            console.log('message status :  ', response.status);
+            // console.log('message data ', json);
+            // return json
+          } catch (error) {
+            console.log('report history :', error);
+          }
+        },
+
 
         login: async (email, password) => {
           try {

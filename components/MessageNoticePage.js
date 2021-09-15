@@ -18,14 +18,14 @@ function MessageNoticeCard() {
   const {user, getuserNotifications, notifications} = useContext(AuthContext);
   console.log('inside card', notifications);
   useEffect(() => {
-    setTimeout(() => {
+    // setTimeout(() => {
       getuserNotifications(user._id);
-    });
-  }, []);
+    // });
+  }, [user]);
   return (
     <View>
-      {notifications.map((item, index) => {
-        return (
+      {/* {notifications.map((item, index) => { */}
+        {/* return ( */}
           <View style={styles.noticeCard}>
             <Text
               style={{
@@ -33,7 +33,8 @@ function MessageNoticeCard() {
                 fontSize: 15,
                 marginTop: 5,
               }}>
-              {item.message}
+                <Text>this</Text>
+              {/* {item.message} */}
             </Text>
 
             <TouchableOpacity
@@ -43,8 +44,8 @@ function MessageNoticeCard() {
               <MaterialCommunityIcons name="close" color="red" size={15} />
             </TouchableOpacity>
           </View>
-        );
-      })}
+        {/* ); */}
+      {/* })} */}
     </View>
   );
 }

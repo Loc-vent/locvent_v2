@@ -1,14 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {useWindowDimensions} from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import MessageNoticePage from '../../components/MessageNoticePage';
 import MessageScreen from './MessageScreen';
 
+
+
 export default function Message() {
+
   const renderScene = SceneMap({
     first: MessageScreen,
     second: MessageNoticePage,
   });
+
+ 
+
+  // getMessage();
 
   const layout = useWindowDimensions();
   const [index, setIndex] = useState(0);
